@@ -1,0 +1,53 @@
+import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
+import PropTypes from 'prop-types';
+import UsageDataProviders from '@folio/erm-usage/src/Main';
+import { Modal } from '@folio/stripes/components';
+
+import css from './UDPSearch.css';
+
+export default class UDPSearchModal extends Component {
+  static propTypes = {
+    stripes: PropTypes.shape({
+      connect: PropTypes.func.isRequired,
+    }).isRequired,
+    onUDPSelected: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+    open: PropTypes.bool,
+    dataKey: PropTypes.string,
+  }
+
+  constructor(props) {
+    super(props);
+
+    const dataKey = props.dataKey;
+    this.connectedApp = props.stripes.connect(UsageDataProviders, { dataKey });
+  }
+
+  selectUDP = (e, udp) => {
+    this.props.onUDPSelected(udp);
+    this.props.onClose();
+  }
+
+  render() {
+    return (
+      <Modal
+        onClose={this.props.onClose}
+        size="large"
+        open={this.props.open}
+        label={<FormattedMessage id="ui-plugin-find-erm-usage-data-provider.modal.label" />}
+        dismissible
+      >
+        <div className={css.udpSearchModal}>
+          <this.connectedApp
+            {...this.props}
+            onSelectRow={this.selectUDP}
+            onComponentWillUnmount={this.props.onClose}
+            showSingleResult={false}
+            browseOnly
+          />
+        </div>
+      </Modal>
+    );
+  }
+}
