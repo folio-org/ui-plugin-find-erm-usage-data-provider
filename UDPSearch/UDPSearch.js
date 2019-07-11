@@ -47,7 +47,7 @@ class UDPSearch extends Component {
       searchButtonStyle,
       searchLabel,
     } = this.props;
-    
+
     return (
       <div className={this.getStyle()}>
         <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
