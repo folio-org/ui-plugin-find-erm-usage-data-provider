@@ -41,6 +41,13 @@ class UDPSearch extends Component {
   }
 
   render() {
+    const {
+      marginBottom0,
+      marginTop0,
+      searchButtonStyle,
+      searchLabel,
+    } = this.props;
+
     return (
       <div className={this.getStyle()}>
         <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
@@ -48,12 +55,14 @@ class UDPSearch extends Component {
             <Button
               id="clickable-plugin-find-erm-usage-data-provider"
               key="searchButton"
-              buttonStyle={this.props.searchButtonStyle}
+              buttonStyle={searchButtonStyle}
               onClick={this.openModal}
-              ariaLabel={ariaLabel}
+              aria-label={ariaLabel}
               tabIndex="-1"
+              marginBottom0={marginBottom0}
+              marginTop0={marginTop0}
             >
-              {this.props.searchLabel ? this.props.searchLabel : <Icon icon="search" color="#fff" />}
+              {searchLabel || <Icon icon="search" color="#fff" />}
             </Button>
           )}
         </FormattedMessage>
@@ -72,7 +81,7 @@ UDPSearch.defaultProps = {
 };
 
 UDPSearch.propTypes = {
-  searchLabel: PropTypes.string,
+  searchLabel: PropTypes.node,
   searchButtonStyle: PropTypes.string,
   marginBottom0: PropTypes.bool,
   marginTop0: PropTypes.bool,
