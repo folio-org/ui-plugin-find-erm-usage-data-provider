@@ -58,7 +58,6 @@ class UDPSearch extends Component {
               buttonStyle={searchButtonStyle}
               onClick={this.openModal}
               aria-label={ariaLabel}
-              tabIndex="-1"
               marginBottom0={marginBottom0}
               marginTop0={marginTop0}
             >
