@@ -42,6 +42,7 @@ class UDPSearch extends Component {
 
   render() {
     const {
+      buttonId,
       marginBottom0,
       marginTop0,
       searchButtonStyle,
@@ -53,7 +54,7 @@ class UDPSearch extends Component {
         <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
           {ariaLabel => (
             <Button
-              id="clickable-plugin-find-erm-usage-data-provider"
+              id={buttonId}
               key="searchButton"
               buttonStyle={searchButtonStyle}
               onClick={this.openModal}
@@ -76,10 +77,12 @@ class UDPSearch extends Component {
 }
 
 UDPSearch.defaultProps = {
+  buttonId: 'clickable-plugin-find-erm-usage-data-provider',
   searchButtonStyle: 'primary noRightRadius',
 };
 
 UDPSearch.propTypes = {
+  buttonId: PropTypes.string,
   searchLabel: PropTypes.node,
   searchButtonStyle: PropTypes.string,
   marginBottom0: PropTypes.bool,
