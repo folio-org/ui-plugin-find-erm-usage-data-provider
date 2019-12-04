@@ -20,11 +20,10 @@ class UDPSearch extends Component {
   }
 
   getStyle() {
-    const { marginBottom0, marginTop0 } = this.props;
+    const { marginBottom0 } = this.props;
     return className(
       css.searchControl,
       { [css.marginBottom0]: marginBottom0 },
-      { [css.marginTop0]: marginTop0 },
     );
   }
 
@@ -44,7 +43,6 @@ class UDPSearch extends Component {
     const {
       buttonId,
       marginBottom0,
-      marginTop0,
       searchButtonStyle,
       searchLabel,
     } = this.props;
@@ -60,7 +58,6 @@ class UDPSearch extends Component {
               onClick={this.openModal}
               aria-label={ariaLabel}
               marginBottom0={marginBottom0}
-              marginTop0={marginTop0}
             >
               {searchLabel || <Icon icon="search" color="#fff" />}
             </Button>
