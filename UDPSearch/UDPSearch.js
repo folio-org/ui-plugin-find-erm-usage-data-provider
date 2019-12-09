@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Button, Icon } from '@folio/stripes/components';
 import className from 'classnames';
+import contains from 'dom-helpers/query/contains';
 
 import css from './UDPSearch.css';
 import UDPSearchModal from './UDPSearchModal';
@@ -17,6 +18,8 @@ class UDPSearch extends Component {
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.modalTrigger = React.createRef();
+    this.modalRef = React.createRef();
   }
 
   getStyle() {
@@ -36,6 +39,23 @@ class UDPSearch extends Component {
   closeModal() {
     this.setState({
       openModal: false,
+    }, () => {
+      if (this.modalRef.current && this.modalTrigger.current) {
+        if (contains(this.modalRef.current, document.activeElement)) {
+          this.modalTrigger.current.focus();
+        }
+      }
+    });
+  }
+
+  renderTriggerButton() {
+    const {
+      renderTrigger,
+    } = this.props;
+
+    return renderTrigger({
+      buttonRef: this.modalTrigger,
+      onClick: this.openModal,
     });
   }
 
@@ -43,27 +63,32 @@ class UDPSearch extends Component {
     const {
       buttonId,
       marginBottom0,
+      renderTrigger,
       searchButtonStyle,
       searchLabel,
     } = this.props;
 
     return (
       <div className={this.getStyle()}>
-        <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
-          {ariaLabel => (
-            <Button
-              id={buttonId}
-              key="searchButton"
-              buttonStyle={searchButtonStyle}
-              onClick={this.openModal}
-              aria-label={ariaLabel}
-              marginBottom0={marginBottom0}
-            >
-              {searchLabel || <Icon icon="search" color="#fff" />}
-            </Button>
-          )}
-        </FormattedMessage>
+        {renderTrigger ?
+          this.renderTriggerButton() :
+          <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
+            {ariaLabel => (
+              <Button
+                id={buttonId}
+                key="searchButton"
+                buttonStyle={searchButtonStyle}
+                buttonRef={this.modalTrigger}
+                onClick={this.openModal}
+                aria-label={ariaLabel}
+                marginBottom0={marginBottom0}
+              >
+                {searchLabel || <Icon icon="search" color="#fff" />}
+              </Button>
+            )}
+          </FormattedMessage>}
         <UDPSearchModal
+          modalRef={this.modalRef}
           open={this.state.openModal}
           onClose={this.closeModal}
           {...this.props}
@@ -80,6 +105,7 @@ UDPSearch.defaultProps = {
 
 UDPSearch.propTypes = {
   buttonId: PropTypes.string,
+  renderTrigger: PropTypes.func,
   searchLabel: PropTypes.node,
   searchButtonStyle: PropTypes.string,
   marginBottom0: PropTypes.bool,
