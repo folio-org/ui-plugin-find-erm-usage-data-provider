@@ -11,6 +11,7 @@ export default class UDPSearchModal extends Component {
     stripes: PropTypes.shape({
       connect: PropTypes.func.isRequired,
     }).isRequired,
+    modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
     onUDPSelected: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool,
@@ -22,6 +23,7 @@ export default class UDPSearchModal extends Component {
 
     const dataKey = props.dataKey;
     this.connectedApp = props.stripes.connect(UsageDataProviders, { dataKey });
+    this.modalRef = props.modalRef || React.createRef();
   }
 
   selectUDP = (e, udp) => {
@@ -32,9 +34,11 @@ export default class UDPSearchModal extends Component {
   render() {
     return (
       <Modal
+        enforceFocus={false}
         onClose={this.props.onClose}
         size="large"
         open={this.props.open}
+        ref={this.modalRef}
         label={<FormattedMessage id="ui-plugin-find-erm-usage-data-provider.modal.label" />}
         dismissible
       >
