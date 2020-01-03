@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Button, Icon } from '@folio/stripes/components';
-import className from 'classnames';
 import contains from 'dom-helpers/query/contains';
 
-import css from './UDPSearch.css';
 import UDPSearchModal from './UDPSearchModal';
 
 class UDPSearch extends Component {
@@ -20,14 +18,6 @@ class UDPSearch extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.modalTrigger = React.createRef();
     this.modalRef = React.createRef();
-  }
-
-  getStyle() {
-    const { marginBottom0 } = this.props;
-    return className(
-      css.searchControl,
-      { [css.marginBottom0]: marginBottom0 },
-    );
   }
 
   openModal() {
@@ -69,7 +59,7 @@ class UDPSearch extends Component {
     } = this.props;
 
     return (
-      <div className={this.getStyle()}>
+      <React.Fragment>
         {renderTrigger ?
           this.renderTriggerButton() :
           <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
@@ -93,7 +83,7 @@ class UDPSearch extends Component {
           onClose={this.closeModal}
           {...this.props}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
