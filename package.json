@@ -31,8 +31,8 @@
     "redux": "^4.0.0"
   },
   "dependencies": {
-    "@folio/erm-usage": "^2.3.0",
     "classnames": "^2.2.5",
+    "lodash": "^4.17.11",
     "prop-types": "^15.6.0",
     "dom-helpers":"^3.4.0"
   },
