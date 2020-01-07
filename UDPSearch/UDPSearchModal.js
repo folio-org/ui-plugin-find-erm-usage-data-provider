@@ -46,9 +46,7 @@ export default class UDPSearchModal extends Component {
         <UDPSearchContainer
           {...this.props}
           onSelectRow={this.selectUDP}
-          onComponentWillUnmount={this.props.onClose}
-          showSingleResult={false}
-          browseOnly
+
         />
       </Modal>
     );

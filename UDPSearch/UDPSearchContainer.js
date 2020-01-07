@@ -51,8 +51,6 @@ class UDPSearchContainer extends React.Component {
       throwErrors: false,
       shouldRefresh: () => false
     },
-    numFiltersLoaded: { initialValue: 1 }, // will be incremented as each filter loads
-    initializedFilterConfig: { initialValue: false },
     query: {
       initialValue: {
         sort: 'label'

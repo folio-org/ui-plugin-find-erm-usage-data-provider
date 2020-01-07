@@ -157,9 +157,7 @@ export default class UDPsView extends React.Component {
     return (
       <div data-test-udp-instances ref={contentRef}>
         <SearchAndSortQuery
-          initialFilterState={{
-            harvestingStatus: ['active']
-          }}
+          initialFilterState={{}}
           initialSearchState={{ query: '' }}
           initialSortState={{ sort: 'label' }}
           queryGetter={queryGetter}
