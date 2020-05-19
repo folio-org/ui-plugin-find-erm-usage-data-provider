@@ -59,7 +59,7 @@ class UDPSearch extends Component {
     } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         {renderTrigger ?
           this.renderTriggerButton() :
           <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
@@ -83,7 +83,7 @@ class UDPSearch extends Component {
           onClose={this.closeModal}
           {...this.props}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
