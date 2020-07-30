@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-erm-usage-data-provider",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "ERM-Usage-data-provider-finder for Stripes",
   "repository": "folio-org/ui-plugin-find-erm-usage-data-provider",
   "publishConfig": {
@@ -21,12 +21,12 @@
   },
   "devDependencies": {
     "@folio/eslint-config-stripes": "^5.2.0",
-    "@folio/stripes": "^4.0.0",
+    "@folio/stripes": "^5.0.0",
     "babel-eslint": "^9.0.0",
     "eslint": "^6.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-intl": "^4.5.1",
+    "react-intl": "^4.5.3",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   },
@@ -37,10 +37,10 @@
     "dom-helpers":"^3.4.0"
   },
   "peerDependencies": {
-    "@folio/stripes": "^4.0.0",
+    "@folio/stripes": "^5.0.0",
     "react": "*",
     "react-dom": "*",
-    "react-intl": "^4.5.1",
+    "react-intl": "^4.5.3",
     "react-redux": "*",
     "redux": "*"
   }
