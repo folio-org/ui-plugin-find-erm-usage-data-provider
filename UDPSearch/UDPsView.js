@@ -9,13 +9,14 @@ import {
   Icon,
   Button,
   PaneMenu,
-  Paneset
+  Paneset,
 } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
 import {
+  CollapseFilterPaneButton,
+  ExpandFilterPaneButton,
   SearchAndSortQuery,
   SearchAndSortNoResultsMessage as NoResultsMessage,
-  SearchAndSortSearchButton as FilterPaneToggle
 } from '@folio/stripes/smart-components';
 
 import UDPFilters from './UDPFilters';
@@ -24,13 +25,13 @@ import css from './UDPSearch.css';
 export default class UDPsView extends React.Component {
   static defaultProps = {
     data: {},
-    visibleColumns: ['label', 'harvestingStatus', 'latestStats', 'aggregator']
+    visibleColumns: ['label', 'harvestingStatus', 'latestStats', 'aggregator'],
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      filterPaneIsVisible: true
+      filterPaneIsVisible: true,
     };
   }
 
@@ -42,32 +43,32 @@ export default class UDPsView extends React.Component {
     latestStats: (
       <FormattedMessage id="ui-erm-usage.information.latestStatistics" />
     ),
-    aggregator: <FormattedMessage id="ui-erm-usage.information.aggregator" />
+    aggregator: <FormattedMessage id="ui-erm-usage.information.aggregator" />,
   };
 
   columnWidths = {
     label: 300,
     harvestingStatus: 150,
     latestStats: 150,
-    aggregator: 200
+    aggregator: 200,
   };
 
   formatter = {
-    label: udp => udp.label,
-    harvestingStatus: udp => udp.harvestingConfig.harvestingStatus,
-    latestStats: udp => udp.latestReport,
-    aggregator: udp => this.getAggregatorName(udp)
+    label: (udp) => udp.label,
+    harvestingStatus: (udp) => udp.harvestingConfig.harvestingStatus,
+    latestStats: (udp) => udp.latestReport,
+    aggregator: (udp) => this.getAggregatorName(udp),
   };
 
-  getAggregatorName = udp => {
+  getAggregatorName = (udp) => {
     return udp.harvestingConfig.harvestVia === 'aggregator'
       ? udp.harvestingConfig.aggregator.name
       : '-';
   };
 
   toggleFilterPane = () => {
-    this.setState(curState => ({
-      filterPaneIsVisible: !curState.filterPaneIsVisible
+    this.setState((curState) => ({
+      filterPaneIsVisible: !curState.filterPaneIsVisible,
     }));
   };
 
@@ -88,42 +89,27 @@ export default class UDPsView extends React.Component {
     );
   };
 
-  renderResultsFirstMenu = filters => {
+  renderResultsFirstMenu = (filters) => {
     const { filterPaneIsVisible } = this.state;
+
+    if (filterPaneIsVisible) {
+      return null;
+    }
+
     const filterCount =
       filters.string !== '' ? filters.string.split(',').length : 0;
-    const hideOrShowMessageId = filterPaneIsVisible
-      ? 'stripes-smart-components.hideSearchPane'
-      : 'stripes-smart-components.showSearchPane';
 
     return (
       <PaneMenu>
-        <FormattedMessage
-          id="stripes-smart-components.numberOfFilters"
-          values={{ count: filterCount }}
-        >
-          {appliedFiltersMessage => (
-            <FormattedMessage id={hideOrShowMessageId}>
-              {hideOrShowMessage => (
-                <FilterPaneToggle
-                  visible={filterPaneIsVisible}
-                  aria-label={`${hideOrShowMessage}...${appliedFiltersMessage}`}
-                  onClick={this.toggleFilterPane}
-                  badge={
-                    !filterPaneIsVisible && filterCount
-                      ? filterCount
-                      : undefined
-                  }
-                />
-              )}
-            </FormattedMessage>
-          )}
-        </FormattedMessage>
+        <ExpandFilterPaneButton
+          filterCount={filterCount}
+          onClick={this.toggleFilterPane}
+        />
       </PaneMenu>
     );
   };
 
-  renderResultsPaneSubtitle = source => {
+  renderResultsPaneSubtitle = (source) => {
     if (source && source.loaded()) {
       const count = source.totalCount();
       return (
@@ -147,7 +133,7 @@ export default class UDPsView extends React.Component {
       queryGetter,
       querySetter,
       source,
-      visibleColumns
+      visibleColumns,
     } = this.props;
 
     const query = queryGetter() || {};
@@ -173,7 +159,7 @@ export default class UDPsView extends React.Component {
             activeFilters,
             filterChanged,
             searchChanged,
-            resetAll
+            resetAll,
           }) => {
             const disableReset = () => !filterChanged && !searchChanged;
 
@@ -182,7 +168,13 @@ export default class UDPsView extends React.Component {
                 {this.state.filterPaneIsVisible && (
                   <Pane
                     defaultWidth="20%"
-                    onClose={this.toggleFilterPane}
+                    lastMenu={
+                      <PaneMenu>
+                        <CollapseFilterPaneButton
+                          onClick={this.toggleFilterPane}
+                        />
+                      </PaneMenu>
+                    }
                     paneTitle={
                       <FormattedMessage id="stripes-smart-components.searchAndFilter" />
                     }
@@ -190,7 +182,7 @@ export default class UDPsView extends React.Component {
                     <form onSubmit={onSubmitSearch}>
                       <div className={css.searchGroupWrap}>
                         <FormattedMessage id="ui-erm-usage.udp.searchInputLabel">
-                          {ariaLabel => (
+                          {(ariaLabel) => (
                             <SearchField
                               aria-label={ariaLabel}
                               autoFocus
@@ -285,7 +277,7 @@ UDPsView.propTypes = Object.freeze({
   querySetter: PropTypes.func.isRequired,
   source: PropTypes.shape({
     loaded: PropTypes.func,
-    totalCount: PropTypes.func
+    totalCount: PropTypes.func,
   }),
-  visibleColumns: PropTypes.arrayOf(PropTypes.string)
+  visibleColumns: PropTypes.arrayOf(PropTypes.string),
 });
