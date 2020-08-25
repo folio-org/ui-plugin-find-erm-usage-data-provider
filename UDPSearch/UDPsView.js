@@ -8,6 +8,7 @@ import {
   Pane,
   Icon,
   Button,
+  NoValue,
   PaneMenu,
   Paneset,
 } from '@folio/stripes/components';
@@ -63,7 +64,7 @@ export default class UDPsView extends React.Component {
   getAggregatorName = (udp) => {
     return udp.harvestingConfig.harvestVia === 'aggregator'
       ? udp.harvestingConfig.aggregator.name
-      : '-';
+      : <NoValue />;
   };
 
   toggleFilterPane = () => {
