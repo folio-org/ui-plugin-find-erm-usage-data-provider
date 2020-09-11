@@ -37,14 +37,14 @@ export default class UDPsView extends React.Component {
   }
 
   columnMapping = {
-    label: <FormattedMessage id="ui-erm-usage.information.providerName" />,
+    label: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.providerName" />,
     harvestingStatus: (
-      <FormattedMessage id="ui-erm-usage.information.harvestingStatus" />
+      <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.harvestingStatus" />
     ),
     latestStats: (
-      <FormattedMessage id="ui-erm-usage.information.latestStatistics" />
+      <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.latestStatistics" />
     ),
-    aggregator: <FormattedMessage id="ui-erm-usage.information.aggregator" />,
+    aggregator: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.aggregator" />,
   };
 
   columnWidths = {
@@ -79,7 +79,7 @@ export default class UDPsView extends React.Component {
     }
 
     return (
-      <div data-test-udps-no-results-message>
+      <div id="udps-no-results-message">
         <NoResultsMessage
           source={source}
           searchTerm={query.query || ''}
@@ -169,6 +169,7 @@ export default class UDPsView extends React.Component {
                 {this.state.filterPaneIsVisible && (
                   <Pane
                     defaultWidth="20%"
+                    id="plugin-find-udp-filter-pane"
                     lastMenu={
                       <PaneMenu>
                         <CollapseFilterPaneButton
@@ -182,7 +183,7 @@ export default class UDPsView extends React.Component {
                   >
                     <form onSubmit={onSubmitSearch}>
                       <div className={css.searchGroupWrap}>
-                        <FormattedMessage id="ui-erm-usage.udp.searchInputLabel">
+                        <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.udp.searchInputLabel">
                           {(ariaLabel) => (
                             <SearchField
                               aria-label={ariaLabel}
@@ -204,8 +205,9 @@ export default class UDPsView extends React.Component {
                             !searchValue.query || searchValue.query === ''
                           }
                           fullWidth
-                          id="clickable-search-agreements"
+                          id="clickable-search-udps"
                           type="submit"
+                          data-test-udp-search-submit
                         >
                           <FormattedMessage id="stripes-smart-components.search" />
                         </Button>

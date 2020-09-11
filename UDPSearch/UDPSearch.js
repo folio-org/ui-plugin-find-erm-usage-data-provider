@@ -72,6 +72,7 @@ class UDPSearch extends Component {
                 onClick={this.openModal}
                 aria-label={ariaLabel}
                 marginBottom0={marginBottom0}
+                data-test-plugin-find-udp-button
               >
                 {searchLabel || <Icon icon="search" color="#fff" />}
               </Button>
