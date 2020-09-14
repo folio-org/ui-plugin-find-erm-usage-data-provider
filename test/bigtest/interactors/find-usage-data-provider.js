@@ -28,18 +28,11 @@ class SearchField {
   clickHarvestSushiCheckbox = clickable('#clickable-filter-harvestVia-sushi');
   clickHarvestAggregatorCheckbox = clickable('#clickable-filter-harvestVia-aggregator');
 
-  // clickStaffCheckbox = clickable('#clickable-filter-pg-staff');
-  // clickUndergradCheckbox = clickable('#clickable-filter-pg-undergrad');
-
   instances = collection('[role="rowgroup"] [role="row"]', {
     click: clickable('[role=gridcell]'),
     hasCheckbox: isPresent('input[type=checkbox]'),
     check: clickable('input[type=checkbox]'),
   });
-
-  // saveMultipleButton = scoped('[data-test-find-users-modal-save-multiple]', {
-  //   click: clickable()
-  // });
 
   resetButton = scoped('#clickable-reset-all', {
     isEnabled: is(':not([disabled])'),
@@ -57,7 +50,7 @@ class SearchField {
     isEnabled: is(':not([disabled])'),
   });
 
-  noResultsDisplayed = isPresent('#udps-no-results-messages');
+  noResultsDisplayed = isPresent('#udps-no-results-message');
 }
 
 @interactor class FindUDPInteractor {
