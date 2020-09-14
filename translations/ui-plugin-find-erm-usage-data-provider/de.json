@@ -1,5 +1,12 @@
 {
     "meta.title": "Usage-data-provider-finder (plugin)",
     "modal.label": "Statistikanbieter auswählen",
-    "searchButton.title": "Statistikanbieter finden"
+    "searchButton.title": "Statistikanbieter finden",
+    "udp.searchInputLabel": "Search usage data providers",
+    "information.harvestingStatus": "Harvesting status",
+    "information.harvestVia": "Harvest via",
+    "information.aggregator": "Aggregator",
+    "information.aggregators": "Aggregators",
+    "information.providerName": "Provider name",
+    "information.latestStatistics": "Latest statistics"
 }
