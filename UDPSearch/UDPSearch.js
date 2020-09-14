@@ -27,21 +27,27 @@ class UDPSearch extends Component {
   }
 
   closeModal() {
-    this.setState({
-      openModal: false,
-    }, () => {
-      if (this.modalRef.current && this.modalTrigger.current) {
-        if (contains(this.modalRef.current, document.activeElement)) {
-          this.modalTrigger.current.focus();
+    const { afterClose } = this.props;
+
+    this.setState(
+      {
+        openModal: false,
+      },
+      () => {
+        if (afterClose) {
+          afterClose();
+        }
+        if (this.modalRef.current && this.modalTrigger.current) {
+          if (contains(this.modalRef.current, document.activeElement)) {
+            this.modalTrigger.current.focus();
+          }
         }
       }
-    });
+    );
   }
 
   renderTriggerButton() {
-    const {
-      renderTrigger,
-    } = this.props;
+    const { renderTrigger } = this.props;
 
     return renderTrigger({
       buttonRef: this.modalTrigger,
@@ -60,10 +66,11 @@ class UDPSearch extends Component {
 
     return (
       <>
-        {renderTrigger ?
-          this.renderTriggerButton() :
+        {renderTrigger ? (
+          this.renderTriggerButton()
+        ) : (
           <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
-            {ariaLabel => (
+            {(ariaLabel) => (
               <Button
                 id={buttonId}
                 key="searchButton"
@@ -72,11 +79,13 @@ class UDPSearch extends Component {
                 onClick={this.openModal}
                 aria-label={ariaLabel}
                 marginBottom0={marginBottom0}
+                data-test-plugin-find-udp-button
               >
                 {searchLabel || <Icon icon="search" color="#fff" />}
               </Button>
             )}
-          </FormattedMessage>}
+          </FormattedMessage>
+        )}
         <UDPSearchModal
           modalRef={this.modalRef}
           open={this.state.openModal}
@@ -94,6 +103,7 @@ UDPSearch.defaultProps = {
 };
 
 UDPSearch.propTypes = {
+  afterClose: PropTypes.func,
   buttonId: PropTypes.string,
   renderTrigger: PropTypes.func,
   searchLabel: PropTypes.node,
