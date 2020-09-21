@@ -3,10 +3,10 @@
     "modal.label": "Select esage data provider",
     "searchButton.title": "Find usage data provider",
     "udp.searchInputLabel": "Search usage data providers",
-    "information.harvestingStatus": "Harvesting status",
-    "information.harvestVia": "Harvest via",
+    "information.harvestingStatus": "ハーベスト状況",
+    "information.harvestVia": "ハーベストの経由",
     "information.aggregator": "Aggregator",
-    "information.aggregators": "Aggregators",
+    "information.aggregators": "アグリゲーター",
     "information.providerName": "Provider name",
-    "information.latestStatistics": "Latest statistics"
+    "information.latestStatistics": "最新の統計"
 }

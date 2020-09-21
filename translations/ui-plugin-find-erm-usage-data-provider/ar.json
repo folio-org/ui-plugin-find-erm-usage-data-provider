@@ -2,11 +2,11 @@
     "meta.title": "باحث مزود بيانات الاستخدام (برنامج مساعد)",
     "modal.label": "حدد مزود بيانات الاستخدام",
     "searchButton.title": "ابحث عن مزود بيانات الاستخدام",
-    "udp.searchInputLabel": "Search usage data providers",
-    "information.harvestingStatus": "Harvesting status",
-    "information.harvestVia": "Harvest via",
-    "information.aggregator": "Aggregator",
-    "information.aggregators": "Aggregators",
-    "information.providerName": "Provider name",
-    "information.latestStatistics": "Latest statistics"
+    "udp.searchInputLabel": "بحث مزودي بيانات الاستخدام",
+    "information.harvestingStatus": "حالة الحصاد",
+    "information.harvestVia": "الحصاد عن طريق",
+    "information.aggregator": "المجمّع",
+    "information.aggregators": "المجمعين",
+    "information.providerName": "اسم مقدم الخدمة",
+    "information.latestStatistics": "أحدث الإحصائيات"
 }
