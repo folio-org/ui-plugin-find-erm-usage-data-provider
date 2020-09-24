@@ -1,5 +1,5 @@
 {
-    "meta.title": "利用データプロバイダーファインダー（プラグイン）",
+    "meta.title": "利用統計データプロバイダーファインダー（プラグイン）",
     "modal.label": "Select esage data provider",
     "searchButton.title": "Find usage data provider",
     "udp.searchInputLabel": "Search usage data providers",
