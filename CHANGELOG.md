@@ -1,5 +1,12 @@
 # Change history for ui-plugin-find-erm-usage-data-provider
 
+## [2.0.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v2.0.0) (2020-10-08)
+* Increment `@folio/stripes` to `v5.0` (and, bugfix, move it to peer) (UIPFUDP-3)
+* Replace Expand/Collapse Search & Filter pane UX with new UX pattern (UIPFUDP-1)
+* Replace item - status.name with No value component (UIPFUDP-2)
+* Language rules compliance: Text case rules (UIPFUDP-4)
+* Add tests to plugin (UIPFUDP-5)
+
 ## [1.4.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v1.4.0) (2020-06-04)
 * Update to `stripes` `v4.0`
 
