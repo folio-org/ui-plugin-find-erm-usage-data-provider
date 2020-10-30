@@ -5,7 +5,7 @@
     "udp.searchInputLabel": "Search usage data providers",
     "information.harvestingStatus": "ハーベスト状況",
     "information.harvestVia": "ハーベストの経由",
-    "information.aggregator": "Aggregator",
+    "information.aggregator": "アグリゲーター",
     "information.aggregators": "アグリゲーター",
     "information.providerName": "Provider name",
     "information.latestStatistics": "最新の統計"
