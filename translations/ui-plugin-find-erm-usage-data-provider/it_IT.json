@@ -1,12 +1,12 @@
 {
     "meta.title": "Usage-data-provider-finder (plugin)",
-    "modal.label": "Select esage data provider",
-    "searchButton.title": "Find usage data provider",
-    "udp.searchInputLabel": "Search usage data providers",
+    "modal.label": "Seleziona un fornitore di statistiche d'uso",
+    "searchButton.title": "Trova fornitore di statistiche d'uso",
+    "udp.searchInputLabel": "Cerca fornitori di statistiche d'uso",
     "information.harvestingStatus": "Harvesting status",
     "information.harvestVia": "Harvest via",
     "information.aggregator": "Aggregator",
-    "information.aggregators": "Aggregators",
-    "information.providerName": "Provider name",
+    "information.aggregators": "Aggregatori",
+    "information.providerName": "Nome del fornitore",
     "information.latestStatistics": "Latest statistics"
 }
