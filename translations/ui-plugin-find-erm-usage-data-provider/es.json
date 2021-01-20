@@ -1,6 +1,6 @@
 {
     "meta.title": "Usage-data-provider-finder (plugin)",
-    "modal.label": "Select esage data provider",
+    "modal.label": "Select usage data provider",
     "searchButton.title": "Find usage data provider",
     "udp.searchInputLabel": "Buscar proveedores de datos de uso",
     "information.harvestingStatus": "Estado de cosecha",
