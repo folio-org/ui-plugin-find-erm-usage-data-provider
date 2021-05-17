@@ -3,7 +3,7 @@
     "modal.label": "Seleziona un fornitore di statistiche d'uso",
     "searchButton.title": "Trova fornitore di statistiche d'uso",
     "udp.searchInputLabel": "Cerca fornitori di statistiche d'uso",
-    "information.harvestingStatus": "Harvesting status",
+    "information.harvestingStatus": "Stato dell'harvesting",
     "information.harvestVia": "Harvest via",
     "information.aggregator": "Aggregator",
     "information.aggregators": "Aggregatori",
