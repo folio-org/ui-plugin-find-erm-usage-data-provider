@@ -6,6 +6,5 @@ buildNPM {
   sonarScanDirs = '.'
   runScripts = [
     ['formatjs-compile': ''],
-    ['test': ''],
   ]
 }
