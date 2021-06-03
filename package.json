@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "stripes test karma",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-erm-usage-data-provider ./translations/ui-plugin-find-erm-usage-data-provider/compiled"
   },
   "devDependencies": {
