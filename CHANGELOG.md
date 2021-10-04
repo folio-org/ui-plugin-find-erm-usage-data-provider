@@ -1,5 +1,8 @@
 # Change history for ui-plugin-find-erm-usage-data-provider
 
+## [4.0.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v4.0.0) (2021-10-04)
+* Increment stripes to v7 (UIPFUDP-15)
+
 ## [3.1.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v3.1.0) (2021-06-14)
 * Compile Translation Files into AST Format (UIPFUDP-13)
 
