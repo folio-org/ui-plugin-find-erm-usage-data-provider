@@ -1,5 +1,5 @@
 {
-    "meta.title": "Usage-data-provider-finder (plugin)",
+    "meta.title": "vyhledávač využití dat poskytovatele (plugin)",
     "modal.label": "Select usage data provider",
     "searchButton.title": "Find usage data provider",
     "udp.searchInputLabel": "Search usage data providers",
