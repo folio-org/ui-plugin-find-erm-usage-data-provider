@@ -4,7 +4,7 @@
     "searchButton.title": "Find usage data provider",
     "udp.searchInputLabel": "Search usage data providers",
     "information.harvestingStatus": "Harvesting status",
-    "information.harvestVia": "Harvest via",
+    "information.harvestVia": "Harvest pomocí",
     "information.aggregator": "Aggregator",
     "information.aggregators": "Aggregators",
     "information.providerName": "Provider name",
