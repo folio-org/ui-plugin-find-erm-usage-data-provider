@@ -3,10 +3,10 @@
     "modal.label": "Vyberte poskytovatele dat o využití",
     "searchButton.title": "Find usage data provider",
     "udp.searchInputLabel": "Vyhledejte poskytovatele údajů o využití",
-    "information.harvestingStatus": "Harvesting status",
+    "information.harvestingStatus": "Stav harvestu",
     "information.harvestVia": "Harvest pomocí",
-    "information.aggregator": "Aggregator",
-    "information.aggregators": "Aggregators",
-    "information.providerName": "Provider name",
-    "information.latestStatistics": "Latest statistics"
+    "information.aggregator": "Agregátor",
+    "information.aggregators": "Agregátoři",
+    "information.providerName": "Název poskytovatele",
+    "information.latestStatistics": "Nejnovější statistiky"
 }
