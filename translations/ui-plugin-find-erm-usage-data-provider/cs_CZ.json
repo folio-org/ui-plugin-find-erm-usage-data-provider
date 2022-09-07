@@ -1,7 +1,7 @@
 {
     "meta.title": "vyhledávač využití dat poskytovatele (plugin)",
     "modal.label": "Vyberte poskytovatele dat o využití",
-    "searchButton.title": "Find usage data provider",
+    "searchButton.title": "Najděte poskytovatele údajů o využití",
     "udp.searchInputLabel": "Vyhledejte poskytovatele údajů o využití",
     "information.harvestingStatus": "Stav harvestu",
     "information.harvestVia": "Harvest pomocí",
