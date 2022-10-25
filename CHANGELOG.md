@@ -1,5 +1,8 @@
 # Change history for ui-plugin-find-erm-usage-data-provider
 
+## [4.2.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v4.2.0) (2022-10-25)
+* Lokalise: Translations update
+
 ## [4.1.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v4.1.0) (2022-06-30)
 * Replace babel-eslint with @babel/eslint-parser (UIPFUDP-19)
 
