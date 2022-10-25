@@ -7,7 +7,6 @@ import PluginHarness from '../helpers/PluginHarness';
 import FindUDPInteractor from '../interactors/find-usage-data-provider';
 
 let closeHandled = false;
-let udpChosen = false;
 
 describe('UI-plugin-find-usage-data-provider', function () {
   const findUDP = new FindUDPInteractor();
@@ -19,13 +18,9 @@ describe('UI-plugin-find-usage-data-provider', function () {
 
   describe('rendering', function () {
     beforeEach(async function () {
-      udpChosen = false;
       closeHandled = false;
       await mount(
         <PluginHarness
-          onUDPSelected={() => {
-            udpChosen = true;
-          }}
           afterClose={() => {
             closeHandled = true;
           }}
