@@ -18,7 +18,8 @@
     "displayName": "ui-plugin-find-erm-usage-data-provider.meta.title"
   },
   "scripts": {
-    "test": "stripes test karma",
+    "test": "yarn run test:bigtest ",
+    "test:bigtest": "stripes test karma",
     "lint": "eslint .",
     "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-plugin-find-erm-usage-data-provider ./translations/ui-plugin-find-erm-usage-data-provider/compiled"

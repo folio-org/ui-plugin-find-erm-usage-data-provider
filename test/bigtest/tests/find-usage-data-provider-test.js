@@ -103,15 +103,12 @@ describe('UI-plugin-find-usage-data-provider', function () {
 
           describe('selecting a udp', function () {
             beforeEach(async function () {
-              await findUDP.modal.instances(1).click();
+              await findUDP.modal.instances(0).click();
             });
 
             it('hides the modal', function () {
               expect(closeHandled).to.be.true;
-            });
-
-            it('calls the selectUDP callback', function () {
-              expect(udpChosen).to.be.true;
+              expect(findUDP.modal.isPresent).to.be.false;
             });
           });
         });
