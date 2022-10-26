@@ -3,7 +3,7 @@
     "modal.label": "選擇使用資料提供者",
     "searchButton.title": "找尋使用資料提供者",
     "udp.searchInputLabel": "搜索使用数据提供者",
-    "information.harvestingStatus": "收割状态",
+    "information.harvestingStatus": "資料擷取狀態",
     "information.harvestVia": "通过收割",
     "information.aggregator": "聚合器",
     "information.aggregators": "聚合器",
