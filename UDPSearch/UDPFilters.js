@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { find, isEmpty } from 'lodash';
+import { find } from 'lodash';
 
 import {
   Accordion,
@@ -38,19 +38,21 @@ export default class UDPFilters extends React.Component {
     FILTERS.forEach(filterName => {
       const current = find(filterGroups, { name: filterName });
       let newValues = {};
-      if (!isEmpty(current.values)) {
+      if (current.names === 'aggregators') {
+        // get filter values from okapi
+        const inputVals = props.data[`${filterName}`] || [];
+        newValues = inputVals.map(entry => ({
+          label: entry.label,
+          value: entry.label
+        }));
+      } else {
+        // get filte values from filterConfig
         newValues = current.values.map(key => {
           return {
             value: key.cql,
             label: key.name
           };
         });
-      } else {
-        const inputVals = props.data[`${filterName}`] || [];
-        newValues = inputVals.map(entry => ({
-          label: entry.label,
-          value: entry.label
-        }));
       }
 
       arr[filterName] = newValues;
