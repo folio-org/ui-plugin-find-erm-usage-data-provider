@@ -1,11 +1,18 @@
 import { render, screen } from '@testing-library/react';
 
 import UDPFilters from './UDPFilters';
+import aggregator from '../test/fixtures/aggregator';
+
+const data = {
+  udps: [],
+  aggregators: [{ aggregator }],
+};
 
 const renderSourceFilter = () => (
   render(
     <UDPFilters
       activeFilters={{}}
+      data={data}
       filterHandlers={{}}
     />,
   )

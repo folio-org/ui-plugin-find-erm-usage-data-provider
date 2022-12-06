@@ -38,7 +38,7 @@ export default class UDPFilters extends React.Component {
     FILTERS.forEach(filterName => {
       const current = find(filterGroups, { name: filterName });
       let newValues = {};
-      if (current.names === 'aggregators') {
+      if (current.name === 'aggregators') {
         // get filter values from okapi
         const inputVals = props.data[`${filterName}`] || [];
         newValues = inputVals.map(entry => ({
