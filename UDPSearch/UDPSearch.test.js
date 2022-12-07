@@ -8,12 +8,15 @@ jest.mock('./UDPSearchModal', () => {
   return () => <span>UDPSearchModal</span>;
 });
 
+const closeModal = jest.fn();
+
 const renderUDPSearch = (
   renderTrigger,
 ) => (
   renderWithIntl(
     <UDPSearch
       renderTrigger={renderTrigger}
+      onClose={closeModal}
     />,
     translationsProperties
   )
