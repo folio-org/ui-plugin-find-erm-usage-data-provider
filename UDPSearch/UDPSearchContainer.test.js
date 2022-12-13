@@ -1,5 +1,6 @@
 import { render, act } from '@testing-library/react';
 
+import '../test/jest/__mock__';
 import UDPSearchContainer from './UDPSearchContainer';
 
 jest.mock('./UDPsView', () => {

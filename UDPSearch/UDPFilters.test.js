@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
+import '../test/jest/__mock__';
 import UDPFilters from './UDPFilters';
 import aggregator from '../test/fixtures/aggregator';
 

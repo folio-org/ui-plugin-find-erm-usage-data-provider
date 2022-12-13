@@ -1,5 +1,6 @@
 import user from '@testing-library/user-event';
 
+import '../test/jest/__mock__';
 import translationsProperties from '../test/jest/helpers/translationsProperties';
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
 import UDPSearch from './UDPSearch';

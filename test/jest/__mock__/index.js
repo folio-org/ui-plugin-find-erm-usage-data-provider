@@ -1,5 +1,3 @@
+import '@folio/stripes-acq-components/test/jest/__mock__';
+
 import './intl.mock';
-import './stripesConfig.mock';
-import './stripesCore.mock';
-import './stripesIcon.mock';
-import './stripesSmartComponents.mock';

@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const path = require('path');
 
-const esModules = ['@folio', 'ky', '@k-int'].join('|');
+const esModules = ['@folio', 'ky'].join('|');
 
 module.exports = {
   collectCoverageFrom: [
@@ -22,5 +22,4 @@ module.exports = {
   testMatch: ['**/(lib|UDPSearch)/**/?(*.)test.{js,jsx}'],
   testPathIgnorePatterns: ['/node_modules/'],
   setupFilesAfterEnv: [path.join(__dirname, './test/jest/jest.setup.js')],
-
 };
