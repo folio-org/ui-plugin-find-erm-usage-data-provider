@@ -1,12 +1,26 @@
-const commonCofig = require('@folio/stripes-acq-components/jest.config');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const path = require('path');
+
+const esModules = ['@folio', 'ky', '@k-int'].join('|');
 
 module.exports = {
-  ...commonCofig,
-  testMatch: ['**/(lib|UDPSearch)/**/?(*.)test.{js,jsx}'],
-  coverageDirectory: './artifacts/coverage-jest/',
   collectCoverageFrom: [
     '**/(lib|UDPSearch)/**/*.{js,jsx}',
     '!**/node_modules/**',
     '!**/test/**',
   ],
+  coverageDirectory: './artifacts/coverage-jest/',
+  coverageReporters: ['lcov'],
+  reporters: ['jest-junit', 'default'],
+  transform: { '^.+\\.(js|jsx)$': path.join(__dirname, './test/jest/jest-transformer.js') },
+  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
+  moduleNameMapper: {
+    '^.+\\.(css)$': 'identity-obj-proxy',
+    '^.+\\.(svg)$': 'identity-obj-proxy',
+  },
+  testEnvironment: 'jsdom',
+  testMatch: ['**/(lib|UDPSearch)/**/?(*.)test.{js,jsx}'],
+  testPathIgnorePatterns: ['/node_modules/'],
+  setupFilesAfterEnv: [path.join(__dirname, './test/jest/jest.setup.js')],
+
 };
