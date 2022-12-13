@@ -31,7 +31,7 @@
     "@babel/eslint-parser": "^7.17.0",
     "@folio/eslint-config-stripes": "^6.1.0",
     "@folio/stripes": "^7.0.0",
-    "@folio/stripes-cli": "^2.0.0",
+    "@folio/stripes-cli": "^2.4.0",
     "@folio/stripes-core": "^8.0.0",
     "@folio/stripes-components": "^10.0.0",
     "@folio/stripes-smart-components": "^7.0.0",
