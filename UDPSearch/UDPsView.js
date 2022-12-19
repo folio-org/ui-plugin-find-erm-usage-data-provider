@@ -227,7 +227,7 @@ export default class UDPsView extends React.Component {
                     </form>
                     <UDPFilters
                       activeFilters={activeFilters.state}
-                      aggregators={data?.aggregators}
+                      data={data}
                       filterHandlers={getFilterHandlers()}
                     />
                   </Pane>

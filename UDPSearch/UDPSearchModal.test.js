@@ -19,8 +19,13 @@ jest.mock('./UDPSearchContainer', () => {
   );
 });
 
+const stripes = {
+  connect: () => { },
+};
+
 const onCloseModal = jest.fn();
 const onSelectUDP = jest.fn();
+const onUDPSelected = jest.fn();
 
 const renderUDPSearchModal = (
   open = true,
@@ -32,6 +37,8 @@ const renderUDPSearchModal = (
       selectUDP={selectUDP}
       onClose={onClose}
       open={open}
+      onUDPSelected={onUDPSelected}
+      stripes={stripes}
     />,
     translationsProperties
   )

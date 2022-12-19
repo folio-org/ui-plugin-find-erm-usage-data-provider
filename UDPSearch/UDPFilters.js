@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { find } from 'lodash';
+import { find, isEmpty } from 'lodash';
 
 import {
   Accordion,
@@ -17,7 +17,7 @@ const FILTERS = ['harvestingStatus', 'harvestVia', 'aggregators'];
 export default class UDPFilters extends React.Component {
   static propTypes = Object.freeze({
     activeFilters: PropTypes.object,
-    aggregators: PropTypes.arrayOf(PropTypes.object),
+    data: PropTypes.object.isRequired,
     filterHandlers: PropTypes.object
   });
 
@@ -38,21 +38,19 @@ export default class UDPFilters extends React.Component {
     FILTERS.forEach(filterName => {
       const current = find(filterGroups, { name: filterName });
       let newValues = {};
-      if (current.name === 'aggregators') {
-        // get filter values from okapi
-        const inputVals = props.aggregators || [];
-        newValues = inputVals.map(entry => ({
-          label: entry.label,
-          value: entry.label
-        }));
-      } else {
-        // get filte values from filterConfig
+      if (!isEmpty(current.values)) {
         newValues = current.values.map(key => {
           return {
             value: key.cql,
             label: key.name
           };
         });
+      } else {
+        const inputVals = props.data[`${filterName}`] || [];
+        newValues = inputVals.map(entry => ({
+          label: entry.label,
+          value: entry.label
+        }));
       }
 
       arr[filterName] = newValues;
@@ -70,7 +68,7 @@ export default class UDPFilters extends React.Component {
     return null;
   }
 
-  renderCheckboxFilter = (key, props) => {
+  renderCheckboxFilter = (key, name, props) => {
     const { activeFilters } = this.props;
     const groupFilters = activeFilters[key] || [];
 
@@ -104,9 +102,9 @@ export default class UDPFilters extends React.Component {
   render() {
     return (
       <AccordionSet>
-        {this.renderCheckboxFilter('harvestingStatus')}
-        {this.renderCheckboxFilter('harvestVia')}
-        {this.renderCheckboxFilter('aggregators')}
+        {this.renderCheckboxFilter('harvestingStatus', 'Harvesting status')}
+        {this.renderCheckboxFilter('harvestVia', 'Harvest via')}
+        {this.renderCheckboxFilter('aggregators', 'Aggregators')}
       </AccordionSet>
     );
   }

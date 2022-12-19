@@ -3,11 +3,16 @@ import { render, screen } from '@testing-library/react';
 import '../test/jest/__mock__';
 import UDPFilters from './UDPFilters';
 
+const data = {
+  udps: [],
+  aggregators: [{ label: 'test', value: 'test' }],
+};
+
 const renderSourceFilter = () => (
   render(
     <UDPFilters
       activeFilters={{}}
-      aggregators={[{ label: 'test', value: 'test' }]}
+      data={data}
       filterHandlers={{}}
     />,
   )
