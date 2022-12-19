@@ -10,9 +10,9 @@ export default class UDPSearchModal extends Component {
   static propTypes = {
     stripes: PropTypes.shape({
       connect: PropTypes.func.isRequired
-    }).isRequired,
+    }),
     modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-    onUDPSelected: PropTypes.func.isRequired,
+    onUDPSelected: PropTypes.func,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool,
     dataKey: PropTypes.string

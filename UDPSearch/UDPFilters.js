@@ -17,7 +17,7 @@ const FILTERS = ['harvestingStatus', 'harvestVia', 'aggregators'];
 export default class UDPFilters extends React.Component {
   static propTypes = Object.freeze({
     activeFilters: PropTypes.object,
-    data: PropTypes.object.isRequired,
+    aggregators: PropTypes.arrayOf(PropTypes.object),
     filterHandlers: PropTypes.object
   });
 
@@ -40,7 +40,7 @@ export default class UDPFilters extends React.Component {
       let newValues = {};
       if (current.name === 'aggregators') {
         // get filter values from okapi
-        const inputVals = props.data[`${filterName}`] || [];
+        const inputVals = props.aggregators || [];
         newValues = inputVals.map(entry => ({
           label: entry.label,
           value: entry.label
@@ -70,7 +70,7 @@ export default class UDPFilters extends React.Component {
     return null;
   }
 
-  renderCheckboxFilter = (key, name, props) => {
+  renderCheckboxFilter = (key, props) => {
     const { activeFilters } = this.props;
     const groupFilters = activeFilters[key] || [];
 
@@ -104,9 +104,9 @@ export default class UDPFilters extends React.Component {
   render() {
     return (
       <AccordionSet>
-        {this.renderCheckboxFilter('harvestingStatus', 'Harvesting status')}
-        {this.renderCheckboxFilter('harvestVia', 'Harvest via')}
-        {this.renderCheckboxFilter('aggregators', 'Aggregators')}
+        {this.renderCheckboxFilter('harvestingStatus')}
+        {this.renderCheckboxFilter('harvestVia')}
+        {this.renderCheckboxFilter('aggregators')}
       </AccordionSet>
     );
   }
