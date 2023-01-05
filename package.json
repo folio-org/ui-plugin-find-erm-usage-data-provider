@@ -18,7 +18,12 @@
     "displayName": "ui-plugin-find-erm-usage-data-provider.meta.title",
     "stripesDeps": [
       "@folio/stripes-acq-components"
-    ]
+    ],
+    "okapiInterfaces": {
+      "aggregator-settings": "1.0",
+      "erm-usage-harvester": "1.1",
+      "usage-data-providers": "2.0"
+    }
   },
   "scripts": {
     "test": "yarn run test:jest",
