@@ -4,6 +4,7 @@
 * Upgrade to Stripes v8 ([UIPFUDP-26](https://issues.folio.org/browse/UIPFUDP-26))
 * Add missing Okapi interfaces ([UIPFUDP-24](https://issues.folio.org/browse/UIPFUDP-24))
 * Replace BigTest with RTL/Jest ([UIPFUDP-7](https://issues.folio.org/browse/UIPFUDP-7))
+* Upgrade to `stripes-acq-components` `v4` and drop unneeded `react-redux` ref ([UIPFUDP-27](https://issues.folio.org/browse/UIPFUDP-27))
 
 ## [4.2.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v4.2.0) (2022-10-25)
 * Lokalise: Translations update
