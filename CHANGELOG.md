@@ -1,6 +1,8 @@
 # Change history for ui-plugin-find-erm-usage-data-provider
 
-## 5.0.0 (IN PROGRESS)
+## 5.1.0 (IN PROGRESS)
+
+## [5.0.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v5.0.0) (2023-02-20)
 * Upgrade to Stripes v8 ([UIPFUDP-26](https://issues.folio.org/browse/UIPFUDP-26))
 * Add missing Okapi interfaces ([UIPFUDP-24](https://issues.folio.org/browse/UIPFUDP-24))
 * Replace BigTest with RTL/Jest ([UIPFUDP-7](https://issues.folio.org/browse/UIPFUDP-7))
