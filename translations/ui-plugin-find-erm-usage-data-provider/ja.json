@@ -1,7 +1,7 @@
 {
     "meta.title": "利用統計データプロバイダーファインダー（プラグイン）",
     "modal.label": "Select usage data provider",
-    "searchButton.title": "Find usage data provider",
+    "searchButton.title": "使用状況データ プロバイダーを探す",
     "udp.searchInputLabel": "Search usage data providers",
     "information.harvestingStatus": "ハーベスト状況",
     "information.harvestVia": "ハーベストの経由",
