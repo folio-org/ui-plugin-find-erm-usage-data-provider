@@ -10,7 +10,7 @@ import udps from '../test/fixtures/udps';
 
 const DATA = {
   aggregators: [],
-  udps: [udps],
+  udps,
 };
 
 const onSubmit = jest.fn();
