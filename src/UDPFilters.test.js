@@ -1,6 +1,4 @@
-import { render, screen } from '@testing-library/react';
-
-import '../test/jest/__mock__';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import UDPFilters from './UDPFilters';
 
 const data = {
@@ -8,15 +6,8 @@ const data = {
   aggregators: [{ label: 'test', value: 'test' }],
 };
 
-const renderSourceFilter = () => (
-  render(
-    <UDPFilters
-      activeFilters={{}}
-      data={data}
-      filterHandlers={{}}
-    />,
-  )
-);
+const renderSourceFilter = () =>
+  render(<UDPFilters activeFilters={{}} data={data} filterHandlers={{}} />);
 
 describe('UDPFilters component', () => {
   beforeEach(() => {
@@ -24,8 +15,14 @@ describe('UDPFilters component', () => {
   });
 
   it('should display filters', () => {
-    expect(screen.getByText('ui-plugin-find-erm-usage-data-provider.information.harvestingStatus')).toBeDefined();
-    expect(screen.getByText('ui-plugin-find-erm-usage-data-provider.information.harvestVia')).toBeDefined();
-    expect(screen.getByText('ui-plugin-find-erm-usage-data-provider.information.aggregators')).toBeDefined();
+    expect(
+      screen.getByText('ui-plugin-find-erm-usage-data-provider.information.harvestingStatus')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('ui-plugin-find-erm-usage-data-provider.information.harvestVia')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('ui-plugin-find-erm-usage-data-provider.information.aggregators')
+    ).toBeInTheDocument();
   });
 });

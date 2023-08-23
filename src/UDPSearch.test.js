@@ -1,8 +1,7 @@
-import user from '@testing-library/user-event';
-
-import '../test/jest/__mock__';
-import translationsProperties from '../test/jest/helpers/translationsProperties';
+import { screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
+import translationsProperties from '../test/jest/helpers/translationsProperties';
 import UDPSearch from './UDPSearch';
 
 jest.mock('./UDPSearchModal', () => {
@@ -11,22 +10,18 @@ jest.mock('./UDPSearchModal', () => {
 
 const closeModal = jest.fn();
 
-const renderUDPSearch = (
-  renderTrigger,
-) => (
+const renderUDPSearch = (renderTrigger) =>
   renderWithIntl(
-    <UDPSearch
-      renderTrigger={renderTrigger}
-      onClose={closeModal}
-    />,
+    <UDPSearch renderTrigger={renderTrigger} onClose={closeModal} />,
     translationsProperties
-  )
-);
+  );
 
 describe('UDPSearch component', () => {
   it('should display search UDP button', () => {
     renderUDPSearch();
-    expect(document.querySelector('#clickable-plugin-find-erm-usage-data-provider')).toBeInTheDocument();
+    expect(
+      document.querySelector('#clickable-plugin-find-erm-usage-data-provider')
+    ).toBeInTheDocument();
   });
 
   it('should render trigger button', () => {
@@ -36,10 +31,10 @@ describe('UDPSearch component', () => {
     expect(renderTrigger).toHaveBeenCalled();
   });
 
-  it('should open UDP search modal', () => {
-    const { getByText } = renderUDPSearch();
-    user.click(document.querySelector('#clickable-plugin-find-erm-usage-data-provider'));
+  it('should open UDP search modal', async () => {
+    renderUDPSearch();
+    await user.click(document.querySelector('#clickable-plugin-find-erm-usage-data-provider'));
 
-    expect(getByText('UDPSearchModal')).toBeDefined();
+    expect(screen.getByText('UDPSearchModal')).toBeInTheDocument();
   });
 });
