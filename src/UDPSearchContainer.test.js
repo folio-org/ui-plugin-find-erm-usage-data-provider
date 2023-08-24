@@ -1,6 +1,4 @@
-import { render, act } from '@testing-library/react';
-
-import '../test/jest/__mock__';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 import UDPSearchContainer from './UDPSearchContainer';
 
 jest.mock('./UDPsView', () => {
@@ -9,12 +7,8 @@ jest.mock('./UDPsView', () => {
 
 const onSelectRow = jest.fn();
 
-const renderUDPSearchContainer = (mutator) => (render(
-  <UDPSearchContainer
-    mutator={mutator}
-    onSelectRow={onSelectRow}
-  />,
-));
+const renderUDPSearchContainer = (mutator) =>
+  render(<UDPSearchContainer mutator={mutator} onSelectRow={onSelectRow} />);
 
 describe('UDPSearchContainer component', () => {
   let mutator;
@@ -24,9 +18,7 @@ describe('UDPSearchContainer component', () => {
   });
 
   it('should not update query when plugin is open', async () => {
-    await act(async () => {
-      renderUDPSearchContainer(mutator);
-    });
+    renderUDPSearchContainer(mutator);
 
     expect(mutator.query.update).not.toHaveBeenCalled();
   });

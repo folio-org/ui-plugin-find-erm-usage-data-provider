@@ -1,12 +1,10 @@
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { noop } from 'lodash';
 import { BrowserRouter as Router } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
-
-import '../test/jest/__mock__';
-import translationsProperties from '../test/jest/helpers/translationsProperties';
-import renderWithIntl from '../test/jest/helpers/renderWithIntl';
-import UDPsView from './UDPsView';
 import udps from '../test/fixtures/udps';
+import renderWithIntl from '../test/jest/helpers/renderWithIntl';
+import translationsProperties from '../test/jest/helpers/translationsProperties';
+import UDPsView from './UDPsView';
 
 const DATA = {
   aggregators: [],
@@ -19,8 +17,8 @@ const renderUDPsView = (
   data = DATA,
   queryGetter = noop,
   querySetter = noop,
-  visibleColumns = ['label', 'harvestingStatus', 'latestStats', 'aggregator'],
-) => (
+  visibleColumns = ['label', 'harvestingStatus', 'latestStats', 'aggregator']
+) =>
   renderWithIntl(
     <Router>
       <UDPsView
@@ -32,8 +30,7 @@ const renderUDPsView = (
       />
     </Router>,
     translationsProperties
-  )
-);
+  );
 
 describe('UDPsView', () => {
   beforeEach(() => {
@@ -61,11 +58,8 @@ describe('UDPsView', () => {
 
     expect(searchButton).toHaveAttribute('disabled');
 
-    userEvent.type(
-      document.querySelector('#input-udp-search'),
-      'Test udp'
-    );
+    await userEvent.type(document.querySelector('#input-udp-search'), 'Test udp');
 
-    expect(searchButton).not.toHaveAttribute('disabled');
+    expect(searchButton).toBeEnabled();
   });
 });
