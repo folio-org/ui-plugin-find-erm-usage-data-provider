@@ -7,9 +7,6 @@
     "registry": "https://repository.folio.org/repository/npm-folio/"
   },
   "license": "Apache-2.0",
-  "engines": {
-    "node": ">=14.0.0"
-  },
   "stripes": {
     "actsAs": [
       "plugin"
@@ -62,6 +59,9 @@
     "dom-helpers": "^3.4.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.0"
+  },
+  "resolutions": {
+    "postcss-nesting": "^10.2.0"
   },
   "peerDependencies": {
     "@folio/stripes": "^8.0.0",
