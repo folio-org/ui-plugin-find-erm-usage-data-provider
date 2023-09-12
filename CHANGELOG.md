@@ -4,6 +4,7 @@
 * Upgrade React to v18([UIPFUDP-30](https://issues.folio.org/browse/UIPFUDP-30))
 * Update Nodejs to v18 in GitHub Actions ([UIPFUDP-31](https://issues.folio.org/browse/UIPFUDP-31))
 * Fix failing test ([UIPFUDP-28](https://issues.folio.org/browse/UIPFUDP-28))
+* *BREAKING* bump `react-intl` to `v6.4.4` ([UIPFUDP-32](https://issues.folio.org/browse/UIPFUDP-32))
 
 ## [5.0.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v5.0.0) (2023-02-20)
 * Upgrade to Stripes v8 ([UIPFUDP-26](https://issues.folio.org/browse/UIPFUDP-26))
