@@ -1,6 +1,8 @@
 # Change history for ui-plugin-find-erm-usage-data-provider
 
-## 6.0.0 (IN PROGRESS)
+## 6.1.0 (IN PROGRESS)
+
+## [6.0.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v6.0.0) (2023-10-12)
 * Upgrade React to v18([UIPFUDP-30](https://issues.folio.org/browse/UIPFUDP-30))
 * Update Nodejs to v18 in GitHub Actions ([UIPFUDP-31](https://issues.folio.org/browse/UIPFUDP-31))
 * Fix failing test ([UIPFUDP-28](https://issues.folio.org/browse/UIPFUDP-28))
