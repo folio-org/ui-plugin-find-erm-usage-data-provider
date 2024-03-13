@@ -1,12 +1,12 @@
 {
-    "meta.title": "使用数据提供者寻找器（插件）",
-    "modal.label": "選擇使用資料提供者",
-    "searchButton.title": "找尋使用資料提供者",
-    "udp.searchInputLabel": "搜索使用数据提供者",
+    "meta.title": "使用資料供應商查找（外掛程式）",
+    "modal.label": "選擇供應商使用資料",
+    "searchButton.title": "尋找使用資料供應商",
+    "udp.searchInputLabel": "搜尋供應商使用統計資料",
     "information.harvestingStatus": "資料擷取狀態",
-    "information.harvestVia": "通过收割",
+    "information.harvestVia": "透過擷取",
     "information.aggregator": "聚合器",
     "information.aggregators": "聚合器",
-    "information.providerName": "提供者名稱",
-    "information.latestStatistics": "最新统计"
+    "information.providerName": "供應商名稱",
+    "information.latestStatistics": "最新統計資料"
 }
