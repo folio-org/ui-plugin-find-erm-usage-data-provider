@@ -1,7 +1,7 @@
 {
     "meta.title": "Recherche de fournisseur de données d'utilisation (plugin)",
     "modal.label": "Sélectionner le fournisseur de données d'utilisation",
-    "searchButton.title": "Trouver un fournisseur de données d'utilisation",
+    "searchButton.title": "Rechercher un fournisseur de données d'utilisation",
     "udp.searchInputLabel": "Search usage data providers",
     "information.harvestingStatus": "Statut du moissonnage",
     "information.harvestVia": "Moissonnage via",
