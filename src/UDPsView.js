@@ -35,7 +35,7 @@ const UDPsView = ({
   visibleColumns = ['label', 'harvestingStatus', 'latestStats', 'aggregator'],
 }) => {
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
-  const searchField = useRef(null);
+  const searchField = useRef();
 
   const columnMapping = {
     label: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.providerName" />,
