@@ -120,7 +120,6 @@ class UDPSearchContainer extends React.Component {
         onSelectRow={onSelectRow}
         queryGetter={this.queryGetter}
         querySetter={this.querySetter}
-        searchField={this.searchField}
         source={this.source}
       />
     );

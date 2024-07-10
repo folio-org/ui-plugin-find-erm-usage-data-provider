@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { noop } from 'lodash';
 import { FormattedMessage } from 'react-intl';
@@ -31,11 +31,11 @@ const UDPsView = ({
   onSelectRow,
   queryGetter,
   querySetter,
-  searchField,
   source,
   visibleColumns = ['label', 'harvestingStatus', 'latestStats', 'aggregator'],
 }) => {
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
+  const searchField = useRef(null);
 
   const columnMapping = {
     label: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.providerName" />,
@@ -94,8 +94,7 @@ const UDPsView = ({
       return null;
     }
 
-    const filterCount =
-      filters.string !== '' ? filters.string.split(',').length : 0;
+    const filterCount = filters.string !== '' ? filters.string.split(',').length : 0;
 
     return (
       <PaneMenu>
@@ -261,7 +260,6 @@ UDPsView.propTypes = Object.freeze({
   onSelectRow: PropTypes.func,
   queryGetter: PropTypes.func.isRequired,
   querySetter: PropTypes.func.isRequired,
-  searchField: PropTypes.object,
   source: PropTypes.shape({
     loaded: PropTypes.func,
     totalCount: PropTypes.func,
