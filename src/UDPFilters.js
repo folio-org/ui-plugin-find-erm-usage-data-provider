@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { find, isEmpty } from 'lodash';
@@ -14,24 +14,18 @@ import filterGroups from './util/filterGroups';
 
 const FILTERS = ['harvestingStatus', 'harvestVia', 'aggregators'];
 
-export default class UDPFilters extends React.Component {
-  static propTypes = Object.freeze({
-    activeFilters: PropTypes.object,
-    data: PropTypes.object.isRequired,
-    filterHandlers: PropTypes.object
-  });
-
-  static defaultProps = {
-    activeFilters: {}
-  };
-
-  state = {
+const UDPFilters = ({
+  activeFilters = {},
+  data,
+  filterHandlers,
+}) => {
+  const [filtersState, setFiltersState] = useState({
     harvestingStatus: [],
     harvestVia: [],
     aggregators: []
-  };
+  });
 
-  static getDerivedStateFromProps(props, state) {
+  useEffect(() => {
     const newState = {};
     const arr = [];
 
@@ -46,7 +40,7 @@ export default class UDPFilters extends React.Component {
           };
         });
       } else {
-        const inputVals = props.data[`${filterName}`] || [];
+        const inputVals = data[`${filterName}`] || [];
         newValues = inputVals.map(entry => ({
           label: entry.label,
           value: entry.label
@@ -56,20 +50,22 @@ export default class UDPFilters extends React.Component {
       arr[filterName] = newValues;
 
       if (
-        state[filterName] &&
-        arr[filterName].length !== state[filterName].length
+        filtersState[filterName] &&
+        arr[filterName].length !== filtersState[filterName].length
       ) {
         newState[filterName] = arr[filterName];
       }
     });
 
-    if (Object.keys(newState).length) return newState;
+    if (Object.keys(newState).length) {
+      setFiltersState(prevState => ({
+        ...prevState,
+        ...newState
+      }));
+    }
+  }, [data, filtersState]);
 
-    return null;
-  }
-
-  renderCheckboxFilter = (key, name, props) => {
-    const { activeFilters } = this.props;
+  const renderCheckboxFilter = (key, name, props) => {
     const groupFilters = activeFilters[key] || [];
 
     return (
@@ -79,16 +75,16 @@ export default class UDPFilters extends React.Component {
         id={`filter-accordion-${key}`}
         label={<FormattedMessage id={`ui-plugin-find-erm-usage-data-provider.information.${key}`} />}
         onClearFilter={() => {
-          this.props.filterHandlers.clearGroup(key);
+          filterHandlers.clearGroup(key);
         }}
         separator={false}
         {...props}
       >
         <CheckboxFilter
-          dataOptions={this.state[key]}
+          dataOptions={filtersState[key]}
           name={key}
           onChange={group => {
-            this.props.filterHandlers.state({
+            filterHandlers.state({
               ...activeFilters,
               [group.name]: group.values
             });
@@ -99,13 +95,19 @@ export default class UDPFilters extends React.Component {
     );
   };
 
-  render() {
-    return (
-      <AccordionSet>
-        {this.renderCheckboxFilter('harvestingStatus', 'Harvesting status')}
-        {this.renderCheckboxFilter('harvestVia', 'Harvest via')}
-        {this.renderCheckboxFilter('aggregators', 'Aggregators')}
-      </AccordionSet>
-    );
-  }
-}
+  return (
+    <AccordionSet>
+      {renderCheckboxFilter('harvestingStatus', 'Harvesting status')}
+      {renderCheckboxFilter('harvestVia', 'Harvest via')}
+      {renderCheckboxFilter('aggregators', 'Aggregators')}
+    </AccordionSet>
+  );
+};
+
+UDPFilters.propTypes = {
+  activeFilters: PropTypes.object,
+  data: PropTypes.object.isRequired,
+  filterHandlers: PropTypes.object
+};
+
+export default UDPFilters;
