@@ -252,10 +252,10 @@ const UDPsView = ({
   );
 };
 
-UDPsView.propTypes = Object.freeze({
+UDPsView.propTypes = {
   children: PropTypes.object,
   contentRef: PropTypes.object,
-  data: PropTypes.shape(),
+  data: PropTypes.object,
   onNeedMoreData: PropTypes.func,
   onSelectRow: PropTypes.func,
   queryGetter: PropTypes.func.isRequired,
@@ -265,6 +265,6 @@ UDPsView.propTypes = Object.freeze({
     totalCount: PropTypes.func,
   }),
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
-});
+};
 
 export default UDPsView;
