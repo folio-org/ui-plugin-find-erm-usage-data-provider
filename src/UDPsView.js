@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { noop } from 'lodash';
 import { FormattedMessage } from 'react-intl';
@@ -76,6 +76,10 @@ const UDPsView = ({
   };
 
   const renderIsEmptyMessage = () => {
+    if (!source) {
+      return (<div>no source yet</div>);
+    }
+
     return (
       <div id="udps-no-results-message">
         <NoResultsMessage
