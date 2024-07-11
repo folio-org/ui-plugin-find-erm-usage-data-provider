@@ -36,6 +36,9 @@ const UDPsView = ({
 }) => {
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
   const searchField = useRef(null);
+  const query = queryGetter() || {};
+  const count = source ? source.totalCount() : 0;
+  const sortOrder = query.sort || '';
 
   const columnMapping = {
     label: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.providerName" />,
@@ -72,15 +75,11 @@ const UDPsView = ({
     setFilterPaneIsVisible(!filterPaneIsVisible);
   };
 
-  const renderIsEmptyMessage = (query, result) => {
-    if (!result) {
-      return 'no source yet';
-    }
-
+  const renderIsEmptyMessage = () => {
     return (
       <div id="udps-no-results-message">
         <NoResultsMessage
-          source={result}
+          source={source}
           searchTerm={query.query || ''}
           filterPaneIsVisible
           toggleFilterPane={noop}
@@ -106,9 +105,8 @@ const UDPsView = ({
     );
   };
 
-  const renderResultsPaneSubtitle = (result) => {
-    if (result && result.loaded()) {
-      const count = result.totalCount();
+  const renderResultsPaneSubtitle = () => {
+    if (source?.loaded()) {
       return (
         <FormattedMessage
           id="stripes-smart-components.searchResultsCountHeader"
@@ -119,10 +117,6 @@ const UDPsView = ({
 
     return <FormattedMessage id="stripes-smart-components.searchCriteria" />;
   };
-
-  const query = queryGetter() || {};
-  const count = source ? source.totalCount() : 0;
-  const sortOrder = query.sort || '';
 
   return (
     <div data-test-udp-instances ref={contentRef}>
@@ -221,7 +215,7 @@ const UDPsView = ({
                 firstMenu={renderResultsFirstMenu(activeFilters)}
                 padContent={false}
                 paneTitle="Usage Data Providers"
-                paneSub={renderResultsPaneSubtitle(source)}
+                paneSub={renderResultsPaneSubtitle()}
               >
                 <MultiColumnList
                   autosize
@@ -230,7 +224,7 @@ const UDPsView = ({
                   contentData={data.udps}
                   formatter={formatter}
                   id="list-udps"
-                  isEmptyMessage={renderIsEmptyMessage(query, source)}
+                  isEmptyMessage={renderIsEmptyMessage()}
                   onHeaderClick={onSort}
                   onNeedMoreData={onNeedMoreData}
                   onRowClick={onSelectRow}
