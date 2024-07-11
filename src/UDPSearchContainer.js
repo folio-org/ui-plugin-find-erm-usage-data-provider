@@ -21,10 +21,9 @@ const UDPSearchContainer = ({
 }) => {
   const searchField = useRef(null);
 
-  let [source, setSource] = useState(); // eslint-disable-line prefer-const
+  let [source] = useState();
   if (!source) {
     source = new StripesConnectedSource({ resources, mutator }, stripes.logger, 'usageDataProviders');
-    setSource(source);
   } else {
     source.update({ resources, mutator }, 'usageDataProviders');
   }
