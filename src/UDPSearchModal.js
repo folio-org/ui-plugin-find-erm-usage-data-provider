@@ -13,7 +13,7 @@ const UDPSearchModal = ({
   open,
   ...props
 }) => {
-  const backupModalRef = useRef();
+  const backupModalRef = useRef(null);
   const internalModalRef = modalRef || backupModalRef;
 
   const selectUDP = (e, udp) => {
