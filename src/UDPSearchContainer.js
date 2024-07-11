@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { stripesConnect } from '@folio/stripes/core';
@@ -21,18 +21,17 @@ const UDPSearchContainer = ({
 }) => {
   const searchField = useRef(null);
 
-  let [source] = useState();
-  if (!source) {
-    source = new StripesConnectedSource({ resources, mutator }, stripes.logger, 'usageDataProviders');
-  } else {
-    source.update({ resources, mutator }, 'usageDataProviders');
-  }
-
   useEffect(() => {
     if (searchField.current) {
       searchField.current.focus();
     }
   }, []);
+
+  const source = new StripesConnectedSource({ resources, mutator }, stripes.logger, 'usageDataProviders');
+
+  // if (source) {
+  //   source.update({ resources, mutator }, 'usageDataProviders');
+  // }
 
   const handleNeedMoreData = () => {
     if (source) {
