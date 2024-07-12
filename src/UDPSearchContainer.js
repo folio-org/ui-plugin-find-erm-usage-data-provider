@@ -29,9 +29,10 @@ const UDPSearchContainer = ({
 
   const source = new StripesConnectedSource({ resources, mutator }, stripes.logger, 'usageDataProviders');
 
-  // if (source) {
-  //   source.update({ resources, mutator }, 'usageDataProviders');
-  // }
+  // TODO: check if this block is still necessary
+  if (source) {
+    source.update({ resources, mutator }, 'usageDataProviders');
+  }
 
   const handleNeedMoreData = () => {
     if (source) {
@@ -59,6 +60,7 @@ const UDPSearchContainer = ({
       onSelectRow={onSelectRow}
       queryGetter={queryGetter}
       querySetter={querySetter}
+      searchField={searchField}
       source={source}
     />
   );

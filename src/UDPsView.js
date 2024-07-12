@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { noop } from 'lodash';
 import { FormattedMessage } from 'react-intl';
@@ -31,11 +31,11 @@ const UDPsView = ({
   onSelectRow,
   queryGetter,
   querySetter,
+  searchField,
   source,
   visibleColumns = ['label', 'harvestingStatus', 'latestStats', 'aggregator'],
 }) => {
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
-  const searchField = useRef(null);
   const query = queryGetter() || {};
   const count = source ? source.totalCount() : 0;
   const sortOrder = query.sort || '';
@@ -258,6 +258,7 @@ UDPsView.propTypes = {
   onSelectRow: PropTypes.func,
   queryGetter: PropTypes.func.isRequired,
   querySetter: PropTypes.func.isRequired,
+  searchField: PropTypes.object,
   source: PropTypes.shape({
     loaded: PropTypes.func,
     totalCount: PropTypes.func,
