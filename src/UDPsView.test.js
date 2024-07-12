@@ -62,4 +62,30 @@ describe('UDPsView', () => {
 
     expect(searchButton).toBeEnabled();
   });
+
+  test('if click "active" filter shows results with all columns', async () => {
+    expect(document.querySelector('#clickable-filter-harvestingStatus-active')).toBeInTheDocument();
+
+    await userEvent.click(document.querySelector('#clickable-filter-harvestingStatus-active'));
+
+    expect(document.querySelectorAll('#list-udps .mclRowContainer > [role=row]').length).toEqual(2);
+    expect(document.querySelector('#list-column-label')).toBeInTheDocument();
+    expect(document.querySelector('#list-column-harvestingstatus')).toBeInTheDocument();
+    expect(document.querySelector('#list-column-lateststats')).toBeInTheDocument();
+    expect(document.querySelector('#list-column-aggregator')).toBeInTheDocument();
+  });
+
+  test('if collapse filter pane is working', async () => {
+    expect(document.querySelector('#paneHeaderplugin-find-udp-filter-pane-pane-title')).toBeInTheDocument();
+    expect(document.querySelector('[data-test-collapse-filter-pane-button]')).toBeInTheDocument();
+
+    await userEvent.click(document.querySelector('[data-test-collapse-filter-pane-button]'));
+
+    expect(document.querySelector('#paneHeaderplugin-find-udp-filter-pane-pane-title')).not.toBeInTheDocument();
+    expect(document.querySelector('[data-test-expand-filter-pane-button]')).toBeInTheDocument();
+
+    await userEvent.click(document.querySelector('[data-test-expand-filter-pane-button]'));
+
+    expect(document.querySelector('#paneHeaderplugin-find-udp-filter-pane-pane-title')).toBeInTheDocument();
+  });
 });
