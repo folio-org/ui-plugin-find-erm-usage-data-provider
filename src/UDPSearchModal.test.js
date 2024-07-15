@@ -1,7 +1,7 @@
 import { screen } from '@folio/jest-config-stripes/testing-library/react';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
+
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
-import translationsProperties from '../test/jest/helpers/translationsProperties';
 import UDPSearchModal from './UDPSearchModal';
 
 jest.mock('./UDPSearchContainer', () => {
@@ -31,8 +31,7 @@ const renderUDPSearchModal = (open = true, onClose = onCloseModal, selectUDP = o
       open={open}
       onUDPSelected={onUDPSelected}
       stripes={stripes}
-    />,
-    translationsProperties
+    />
   );
 
 describe('UDPSearchModal component', () => {
