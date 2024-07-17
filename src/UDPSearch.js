@@ -7,6 +7,7 @@ import contains from 'dom-helpers/query/contains';
 import UDPSearchModal from './UDPSearchModal';
 
 const UDPSearch = ({
+  afterClose,
   buttonId = 'clickable-plugin-find-erm-usage-data-provider',
   marginBottom0,
   renderTrigger,
@@ -26,6 +27,9 @@ const UDPSearch = ({
   const closeModal = () => {
     setIsOpenModal(false);
 
+    if (afterClose) {
+      afterClose();
+    }
     if (modalRef.current && modalTrigger.current) {
       if (contains(modalRef.current, document.activeElement)) {
         modalTrigger.current.focus();
@@ -73,6 +77,7 @@ const UDPSearch = ({
 };
 
 UDPSearch.propTypes = {
+  afterClose: PropTypes.func,
   buttonId: PropTypes.string,
   renderTrigger: PropTypes.func,
   searchLabel: PropTypes.node,
