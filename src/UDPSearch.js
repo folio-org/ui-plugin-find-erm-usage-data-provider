@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Button, Icon } from '@folio/stripes/components';
@@ -6,100 +6,74 @@ import contains from 'dom-helpers/query/contains';
 
 import UDPSearchModal from './UDPSearchModal';
 
-class UDPSearch extends Component {
-  constructor(props) {
-    super(props);
+const UDPSearch = ({
+  afterClose,
+  buttonId = 'clickable-plugin-find-erm-usage-data-provider',
+  marginBottom0,
+  renderTrigger,
+  searchButtonStyle = 'primary noRightRadius',
+  searchLabel,
+  ...props
+}) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
-    this.state = {
-      openModal: false,
-    };
+  const modalTrigger = useRef(null);
+  const modalRef = useRef(null);
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.modalTrigger = React.createRef();
-    this.modalRef = React.createRef();
-  }
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
 
-  openModal() {
-    this.setState({
-      openModal: true,
-    });
-  }
+  const closeModal = () => {
+    setIsOpenModal(false);
 
-  closeModal() {
-    const { afterClose } = this.props;
-
-    this.setState(
-      {
-        openModal: false,
-      },
-      () => {
-        if (afterClose) {
-          afterClose();
-        }
-        if (this.modalRef.current && this.modalTrigger.current) {
-          if (contains(this.modalRef.current, document.activeElement)) {
-            this.modalTrigger.current.focus();
-          }
-        }
+    if (afterClose) {
+      afterClose();
+    }
+    if (modalRef.current && modalTrigger.current) {
+      if (contains(modalRef.current, document.activeElement)) {
+        modalTrigger.current.focus();
       }
-    );
-  }
+    }
+  };
 
-  renderTriggerButton() {
-    const { renderTrigger } = this.props;
-
+  const renderTriggerButton = () => {
     return renderTrigger({
-      buttonRef: this.modalTrigger,
-      onClick: this.openModal,
+      buttonRef: modalTrigger,
+      onClick: openModal,
     });
-  }
+  };
 
-  render() {
-    const {
-      buttonId,
-      marginBottom0,
-      renderTrigger,
-      searchButtonStyle,
-      searchLabel,
-    } = this.props;
-
-    return (
-      <>
-        {renderTrigger ? (
-          this.renderTriggerButton()
-        ) : (
-          <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
-            {(ariaLabel) => (
-              <Button
-                id={buttonId}
-                key="searchButton"
-                buttonStyle={searchButtonStyle}
-                buttonRef={this.modalTrigger}
-                onClick={this.openModal}
-                aria-label={ariaLabel}
-                marginBottom0={marginBottom0}
-                data-test-plugin-find-udp-button
-              >
-                {searchLabel || <Icon icon="search" color="#fff" />}
-              </Button>
-            )}
-          </FormattedMessage>
-        )}
-        <UDPSearchModal
-          modalRef={this.modalRef}
-          open={this.state.openModal}
-          onClose={this.closeModal}
-          {...this.props}
-        />
-      </>
-    );
-  }
-}
-
-UDPSearch.defaultProps = {
-  buttonId: 'clickable-plugin-find-erm-usage-data-provider',
-  searchButtonStyle: 'primary noRightRadius',
+  return (
+    <>
+      {renderTrigger ? (
+        renderTriggerButton()
+      ) : (
+        <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
+          {(ariaLabel) => (
+            <Button
+              id={buttonId}
+              key="searchButton"
+              buttonStyle={searchButtonStyle}
+              buttonRef={modalTrigger}
+              onClick={openModal}
+              aria-label={ariaLabel}
+              marginBottom0={marginBottom0}
+              data-test-plugin-find-udp-button
+            >
+              {searchLabel || <Icon icon="search" color="#fff" />}
+            </Button>
+          )}
+        </FormattedMessage>
+      )}
+      <UDPSearchModal
+        modalRef={modalRef}
+        open={isOpenModal}
+        onClose={closeModal}
+        {...props}
+      />
+    </>
+  );
 };
 
 UDPSearch.propTypes = {
@@ -109,7 +83,6 @@ UDPSearch.propTypes = {
   searchLabel: PropTypes.node,
   searchButtonStyle: PropTypes.string,
   marginBottom0: PropTypes.bool,
-  marginTop0: PropTypes.bool,
 };
 
 export default UDPSearch;
