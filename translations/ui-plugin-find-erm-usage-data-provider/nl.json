@@ -1,12 +1,12 @@
 {
-    "meta.title": "Usage-data-provider-finder (plugin)",
-    "modal.label": "Select usage data provider",
-    "searchButton.title": "Find usage data provider",
-    "udp.searchInputLabel": "Search usage data providers",
-    "information.harvestingStatus": "Harvesting status",
+    "meta.title": "Leverancier gebruiksdata zoeken (plugin)",
+    "modal.label": "Leverancier gebruiksdata selecteren",
+    "searchButton.title": "Leverancier gebruiksdata zoeken",
+    "udp.searchInputLabel": "Leverancier gebruiksdata zoeken",
+    "information.harvestingStatus": "Status harvesting",
     "information.harvestVia": "Harvest via",
     "information.aggregator": "Aggregator",
     "information.aggregators": "Aggregators",
-    "information.providerName": "Provider name",
-    "information.latestStatistics": "Latest statistics"
+    "information.providerName": "Naam leverancier",
+    "information.latestStatistics": "Meest recente statistieken"
 }
