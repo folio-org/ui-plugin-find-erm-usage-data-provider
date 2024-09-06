@@ -16,7 +16,7 @@
     "okapiInterfaces": {
       "aggregator-settings": "1.0",
       "erm-usage-harvester": "1.1",
-      "usage-data-providers": "3.0"
+      "usage-data-providers": "2.0 3.0"
     }
   },
   "scripts": {
