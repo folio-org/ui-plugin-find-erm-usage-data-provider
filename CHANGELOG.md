@@ -6,6 +6,7 @@
 * Remove dependency to stripes-acq-components, use mocks local ([UIPFUDP-40](https://folio-org.atlassian.net/browse/UIPFUDP-40))
 * Fix GitHub Actions workflow not running for tags ([FOLIO-4086](https://folio-org.atlassian.net/browse/FOLIO-4086))
 * Add support for interface `aggregator-settings 2.0` ([UIPFUDP-42](https://folio-org.atlassian.net/browse/UIPFUDP-42))
+* Add support for interface `erm-usage-harvester 2.0`([UIPFUDP-43](https://folio-org.atlassian.net/browse/UIPFUDP-43))
 
 ## 6.1.0 (2024-03-20)
 * Translation updates
