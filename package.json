@@ -14,7 +14,7 @@
     "pluginType": "find-erm-usage-data-provider",
     "displayName": "ui-plugin-find-erm-usage-data-provider.meta.title",
     "okapiInterfaces": {
-      "aggregator-settings": "1.0",
+      "aggregator-settings": "1.0 2.0",
       "erm-usage-harvester": "1.1",
       "usage-data-providers": "2.0 3.0"
     }
