@@ -8,6 +8,7 @@
 * Update to usage-data-providers 3.0 ([UIPFUDP-41](https://folio-org.atlassian.net/browse/UIPFUDP-41))
 * Remove dependency to stripes-acq-components, use mocks local ([UIPFUDP-40](https://folio-org.atlassian.net/browse/UIPFUDP-40))
 * Fix GitHub Actions workflow not running for tags ([FOLIO-4086](https://folio-org.atlassian.net/browse/FOLIO-4086))
+* Add support for interface `aggregator-settings 2.0` ([UIPFUDP-42](https://folio-org.atlassian.net/browse/UIPFUDP-42))
 
 ## [6.0.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v6.0.0) (2023-10-12)
 * Upgrade React to v18([UIPFUDP-30](https://issues.folio.org/browse/UIPFUDP-30))
