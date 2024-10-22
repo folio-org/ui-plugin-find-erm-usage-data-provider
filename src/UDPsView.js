@@ -130,6 +130,7 @@ const UDPsView = ({
         initialSortState={{ sort: 'label' }}
         queryGetter={queryGetter}
         querySetter={querySetter}
+        setQueryOnMount
         syncToLocationSearch={false}
       >
         {({
@@ -174,7 +175,13 @@ const UDPsView = ({
                             id="input-udp-search"
                             inputRef={searchField}
                             name="query"
-                            onChange={getSearchHandlers().query}
+                            onChange={(e) => {
+                              if (e.target.value) {
+                                getSearchHandlers().query(e);
+                              } else {
+                                getSearchHandlers().reset();
+                              }
+                            }}
                             onClear={getSearchHandlers().reset}
                             value={searchValue.query}
                           />
