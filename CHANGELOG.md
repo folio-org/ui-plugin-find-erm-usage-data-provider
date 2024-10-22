@@ -7,6 +7,7 @@
 * Change class to function components and refactor away from default props for functional components([UIPFUDP-35](https://folio-org.atlassian.net/browse/UIPFUDP-35))
 * Update to usage-data-providers 3.0 ([UIPFUDP-41](https://folio-org.atlassian.net/browse/UIPFUDP-41))
 * Remove dependency to stripes-acq-components, use mocks local ([UIPFUDP-40](https://folio-org.atlassian.net/browse/UIPFUDP-40))
+* Deleting search string via keyboard does not update search results ([UIPFUDP-36](https://folio-org.atlassian.net/browse/UIPFUDP-36))
 
 ## [6.0.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v6.0.0) (2023-10-12)
 * Upgrade React to v18([UIPFUDP-30](https://issues.folio.org/browse/UIPFUDP-30))
