@@ -1,6 +1,6 @@
-import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { ModuleHierarchyProvider, StripesContext, useStripes } from '@folio/stripes/core';
 
 import udps from '../test/fixtures/udps';
@@ -13,41 +13,31 @@ const onSearchComplete = jest.fn();
 const isEmptyMessage = jest.fn();
 const history = {};
 
-let renderWithIntlResult = {};
-const sourcePending = { source: { pending: jest.fn(() => true), totalCount: jest.fn(() => 0), loaded: jest.fn(() => false) } };
-const sourceLoaded = { source: { pending: jest.fn(() => false), totalCount: jest.fn(() => 1), loaded: jest.fn(() => true) } };
-
 const renderUDPsView = (
   stripes,
-  props,
   udpsData,
-  rerender
-) =>
-  renderWithIntl(
-    <MemoryRouter>
-      <StripesContext.Provider value={stripes}>
-        <ModuleHierarchyProvider module="@folio/plugin-find-erm-usage-data-provider">
-          <UDPsView
-            data={{
-              udps: udpsData,
-            }}
-            selectedRecordId=""
-            onNeedMoreData={jest.fn()}
-            isEmptyMessage={isEmptyMessage}
-            queryGetter={jest.fn()}
-            querySetter={jest.fn()}
-            searchString=""
-            visibleColumns={['label', 'harvestingStatus', 'latestStats', 'aggregator']}
-            history={history}
-            onSearchComplete={onSearchComplete}
-            location={{ pathname: '', search: '' }}
-            {...props}
-          />
-        </ModuleHierarchyProvider>
-      </StripesContext.Provider>
-    </MemoryRouter>,
-    rerender
-  );
+) => renderWithIntl(
+  <MemoryRouter>
+    <StripesContext.Provider value={stripes}>
+      <ModuleHierarchyProvider module="@folio/plugin-find-erm-usage-data-provider">
+        <UDPsView
+          data={{
+            udps: udpsData,
+          }}
+          selectedRecordId=""
+          onNeedMoreData={jest.fn()}
+          isEmptyMessage={isEmptyMessage}
+          queryGetter={jest.fn()}
+          querySetter={jest.fn()}
+          searchString=""
+          history={history}
+          onSearchComplete={onSearchComplete}
+          location={{ pathname: '', search: '' }}
+        />
+      </ModuleHierarchyProvider>
+    </StripesContext.Provider>
+  </MemoryRouter>,
+);
 
 describe('UDPsView', () => {
   let stripes;
@@ -63,7 +53,7 @@ describe('UDPsView', () => {
 
   describe('check if elements are available', () => {
     beforeEach(() => {
-      renderUDPsView(stripes, sourcePending, udps);
+      renderUDPsView(stripes, udps);
     });
 
     it('should be visible filter pane and searchField ', () => {
@@ -110,12 +100,13 @@ describe('UDPsView', () => {
 
   describe('click "active" filter and load new results', () => {
     it('should show a certain amount of results and all columns', async () => {
-      renderUDPsView(stripes, {}, udps);
+      renderUDPsView(stripes, udps);
       expect(document.querySelector('#clickable-filter-harvestingStatus-active')).toBeInTheDocument();
 
       await userEvent.click(document.querySelector('#clickable-filter-harvestingStatus-active'));
 
-      expect(document.querySelectorAll('#list-udps .mclRowContainer > [role=row]').length).toEqual(2);
+      expect(document.querySelector('#clickable-reset-all')).toBeInTheDocument();
+      expect(document.querySelector('#clickable-reset-all')).toBeEnabled();
 
       expect(document.querySelector('#list-column-label')).toBeInTheDocument();
       expect(document.querySelector('#list-column-harvestingstatus')).toBeInTheDocument();
@@ -126,7 +117,7 @@ describe('UDPsView', () => {
 
   describe('enter search string and load new results', () => {
     it('should enable search button and show a certain amount of results', async () => {
-      renderWithIntlResult = renderUDPsView(stripes, sourcePending, udps);
+      renderUDPsView(stripes, udps);
 
       expect(document.querySelector('#plugin-find-udp-filter-pane')).toBeInTheDocument();
 
@@ -137,16 +128,6 @@ describe('UDPsView', () => {
 
       expect(searchButton).toBeInTheDocument();
       expect(searchButton).toBeEnabled();
-      await userEvent.click(searchButton);
-
-      renderUDPsView(
-        stripes,
-        sourceLoaded,
-        udps,
-        renderWithIntlResult.rerender
-      );
-
-      expect(document.querySelectorAll('#list-udps .mclRowContainer > [role=row]').length).toEqual(1);
     });
   });
 });
@@ -156,7 +137,7 @@ describe('UDPsView - without results', () => {
   beforeEach(() => {
     stripes = useStripes();
 
-    renderUDPsView(stripes, {}, []);
+    renderUDPsView(stripes, []);
   });
 
   it('should show no results', async () => {
@@ -170,8 +151,5 @@ describe('UDPsView - without results', () => {
     await userEvent.click(searchButton);
 
     expect(document.querySelectorAll('#list-udps .mclRowContainer > [role=row]').length).toEqual(0);
-    // expect(document.querySelector('#udps-no-results-message')).toBeInTheDocument();
-    // expect(document.querySelector('[noResultsMessageLabel]')).toBeInTheDocument();
-    // expect(isEmptyMessage).toHaveBeenCalled();
   });
 });

@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
+
 import { Modal } from '@folio/stripes/components';
 
-import UDPSearchContainer from './UDPSearchContainer';
 import css from './UDPSearch.css';
+import UDPSearchContainer from './UDPSearchContainer';
 
 const UDPSearchModal = ({
   modalRef,
@@ -43,14 +44,14 @@ const UDPSearchModal = ({
 };
 
 UDPSearchModal.propTypes = {
+  dataKey: PropTypes.string,
+  modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  onClose: PropTypes.func.isRequired,
+  onUDPSelected: PropTypes.func.isRequired,
+  open: PropTypes.bool,
   stripes: PropTypes.shape({
     connect: PropTypes.func.isRequired
   }).isRequired,
-  modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  onUDPSelected: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool,
-  dataKey: PropTypes.string
 };
 
 export default UDPSearchModal;

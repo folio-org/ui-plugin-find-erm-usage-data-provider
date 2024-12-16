@@ -18,14 +18,13 @@ jest.mock('./UDPSearchModal', () => jest.fn(({ open, onClose }) => (
 const closeModal = jest.fn();
 const isOpen = true;
 
-const renderUDPSearch = (renderTrigger) =>
-  renderWithIntl(
-    <UDPSearch
-      renderTrigger={renderTrigger}
-      onClose={closeModal}
-      open={isOpen}
-    />
-  );
+const renderUDPSearch = (renderTrigger) => renderWithIntl(
+  <UDPSearch
+    renderTrigger={renderTrigger}
+    onClose={closeModal}
+    open={isOpen}
+  />
+);
 
 describe('UDPSearch component', () => {
   it('should display search UDP button', () => {

@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { noop } from 'lodash';
+import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+
 import {
   MultiColumnList,
   SearchField,
@@ -25,7 +25,6 @@ import css from './UDPSearch.css';
 
 const UDPsView = ({
   children,
-  contentRef,
   data = {},
   onNeedMoreData,
   onSelectRow,
@@ -59,9 +58,7 @@ const UDPsView = ({
   };
 
   const getAggregatorName = (udp) => {
-    return udp.harvestingConfig.harvestVia === 'aggregator'
-      ? udp.harvestingConfig.aggregator.name
-      : <NoValue />;
+    return udp.harvestingConfig.harvestVia === 'aggregator' ? udp.harvestingConfig.aggregator.name : <NoValue />;
   };
 
   const formatter = {
@@ -86,7 +83,7 @@ const UDPsView = ({
           source={source}
           searchTerm={query.query || ''}
           filterPaneIsVisible
-          toggleFilterPane={noop}
+          toggleFilterPane={toggleFilterPane}
         />
       </div>
     );
@@ -123,7 +120,7 @@ const UDPsView = ({
   };
 
   return (
-    <div data-test-udp-instances ref={contentRef}>
+    <div>
       <SearchAndSortQuery
         initialFilterState={{}}
         initialSearchState={{ query: '' }}
@@ -171,7 +168,6 @@ const UDPsView = ({
                             aria-label={ariaLabel}
                             autoFocus
                             className={css.searchField}
-                            data-test-udp-search-input
                             id="input-udp-search"
                             inputRef={searchField}
                             name="query"
@@ -195,7 +191,6 @@ const UDPsView = ({
                         fullWidth
                         id="clickable-search-udps"
                         type="submit"
-                        data-test-udp-search-submit
                       >
                         <FormattedMessage id="stripes-smart-components.search" />
                       </Button>
@@ -259,7 +254,6 @@ const UDPsView = ({
 
 UDPsView.propTypes = {
   children: PropTypes.object,
-  contentRef: PropTypes.object,
   data: PropTypes.object,
   onNeedMoreData: PropTypes.func,
   onSelectRow: PropTypes.func,

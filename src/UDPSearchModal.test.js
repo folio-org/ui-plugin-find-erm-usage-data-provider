@@ -23,16 +23,15 @@ const onCloseModal = jest.fn();
 const onSelectUDP = jest.fn();
 const onUDPSelected = jest.fn();
 
-const renderUDPSearchModal = (open = true, onClose = onCloseModal, selectUDP = onSelectUDP) =>
-  renderWithIntl(
-    <UDPSearchModal
-      selectUDP={selectUDP}
-      onClose={onClose}
-      open={open}
-      onUDPSelected={onUDPSelected}
-      stripes={stripes}
-    />
-  );
+const renderUDPSearchModal = (open = true, onClose = onCloseModal, selectUDP = onSelectUDP) => renderWithIntl(
+  <UDPSearchModal
+    selectUDP={selectUDP}
+    onClose={onClose}
+    open={open}
+    onUDPSelected={onUDPSelected}
+    stripes={stripes}
+  />
+);
 
 describe('UDPSearchModal component', () => {
   it('should display UDP search modal', () => {

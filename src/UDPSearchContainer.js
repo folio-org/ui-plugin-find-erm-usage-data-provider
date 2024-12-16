@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { get } from 'lodash';
+import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
+
 import { stripesConnect } from '@folio/stripes/core';
 import {
   makeQueryFunction,
@@ -28,11 +29,6 @@ const UDPSearchContainer = ({
   }, []);
 
   const source = new StripesConnectedSource({ resources, mutator }, stripes.logger, 'usageDataProviders');
-
-  // check if this block is still necessary
-  if (source) {
-    source.update({ resources, mutator }, 'usageDataProviders');
-  }
 
   const handleNeedMoreData = () => {
     if (source) {

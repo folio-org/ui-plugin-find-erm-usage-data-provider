@@ -1,4 +1,5 @@
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+
 import UDPFilters from './UDPFilters';
 
 const data = {
@@ -6,8 +7,9 @@ const data = {
   aggregators: [{ label: 'test', value: 'test' }],
 };
 
-const renderSourceFilter = () =>
-  render(<UDPFilters activeFilters={{}} data={data} filterHandlers={{}} />);
+const renderSourceFilter = () => render(
+  <UDPFilters activeFilters={{}} data={data} filterHandlers={{}} />
+);
 
 describe('UDPFilters component', () => {
   beforeEach(() => {

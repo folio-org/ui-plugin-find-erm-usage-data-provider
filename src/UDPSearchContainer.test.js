@@ -1,5 +1,4 @@
 import { render } from '@folio/jest-config-stripes/testing-library/react';
-
 import { StripesConnectedSource } from '@folio/stripes/smart-components';
 
 import UDPSearchContainer from './UDPSearchContainer';
@@ -56,16 +55,6 @@ describe('UDPSearchContainer', () => {
     };
 
     StripesConnectedSource.mockImplementation(() => mockSource);
-  });
-
-  it('should call the update method of source when resources or mutator changes', () => {
-    renderUDPSearchContainer();
-
-    // The source update is called during component render
-    expect(mockSource.update).toHaveBeenCalledWith(
-      expect.objectContaining({ resources, mutator }),
-      'usageDataProviders'
-    );
   });
 
   it('should fetch more data when handleNeedMoreData is called', () => {

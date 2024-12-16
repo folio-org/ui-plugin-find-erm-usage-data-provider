@@ -1,13 +1,13 @@
+import contains from 'dom-helpers/query/contains';
+import PropTypes from 'prop-types';
 import { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
+
 import { Button, Icon } from '@folio/stripes/components';
-import contains from 'dom-helpers/query/contains';
 
 import UDPSearchModal from './UDPSearchModal';
 
 const UDPSearch = ({
-  afterClose,
   buttonId = 'clickable-plugin-find-erm-usage-data-provider',
   marginBottom0,
   renderTrigger,
@@ -27,9 +27,6 @@ const UDPSearch = ({
   const closeModal = () => {
     setIsOpenModal(false);
 
-    if (afterClose) {
-      afterClose();
-    }
     if (modalRef.current && modalTrigger.current) {
       if (contains(modalRef.current, document.activeElement)) {
         modalTrigger.current.focus();
@@ -59,7 +56,6 @@ const UDPSearch = ({
               onClick={openModal}
               aria-label={ariaLabel}
               marginBottom0={marginBottom0}
-              data-test-plugin-find-udp-button
             >
               {searchLabel || <Icon icon="search" color="#fff" />}
             </Button>
@@ -77,12 +73,11 @@ const UDPSearch = ({
 };
 
 UDPSearch.propTypes = {
-  afterClose: PropTypes.func,
   buttonId: PropTypes.string,
-  renderTrigger: PropTypes.func,
-  searchLabel: PropTypes.node,
-  searchButtonStyle: PropTypes.string,
   marginBottom0: PropTypes.bool,
+  renderTrigger: PropTypes.func,
+  searchButtonStyle: PropTypes.string,
+  searchLabel: PropTypes.node,
 };
 
 export default UDPSearch;
