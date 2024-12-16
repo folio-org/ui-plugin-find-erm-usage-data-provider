@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-
 import {
   MultiColumnList,
   SearchField,
@@ -58,7 +57,9 @@ const UDPsView = ({
   };
 
   const getAggregatorName = (udp) => {
-    return udp.harvestingConfig.harvestVia === 'aggregator' ? udp.harvestingConfig.aggregator.name : <NoValue />;
+    return udp.harvestingConfig.harvestVia === 'aggregator'
+      ? udp.harvestingConfig.aggregator.name
+      : <NoValue />;
   };
 
   const formatter = {

@@ -1,7 +1,7 @@
-import { find, isEmpty } from 'lodash';
-import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { find, isEmpty } from 'lodash';
 
 import {
   Accordion,
@@ -32,7 +32,6 @@ const UDPFilters = ({
     FILTERS.forEach(filterName => {
       const current = find(filterGroups, { name: filterName });
       let newValues = {};
-
       if (!isEmpty(current.values)) {
         newValues = current.values.map(key => {
           return {
@@ -51,7 +50,8 @@ const UDPFilters = ({
       arr[filterName] = newValues;
 
       if (
-        filtersState[filterName] && arr[filterName].length !== filtersState[filterName].length
+        filtersState[filterName] &&
+        arr[filterName].length !== filtersState[filterName].length
       ) {
         newState[filterName] = arr[filterName];
       }

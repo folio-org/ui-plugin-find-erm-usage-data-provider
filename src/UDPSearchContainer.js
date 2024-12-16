@@ -1,7 +1,6 @@
-import { get } from 'lodash';
-import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
-
+import PropTypes from 'prop-types';
+import { get } from 'lodash';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   makeQueryFunction,

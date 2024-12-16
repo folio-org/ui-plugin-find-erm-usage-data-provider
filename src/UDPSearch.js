@@ -1,9 +1,8 @@
-import contains from 'dom-helpers/query/contains';
-import PropTypes from 'prop-types';
 import { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-
+import PropTypes from 'prop-types';
 import { Button, Icon } from '@folio/stripes/components';
+import contains from 'dom-helpers/query/contains';
 
 import UDPSearchModal from './UDPSearchModal';
 
@@ -56,6 +55,7 @@ const UDPSearch = ({
               onClick={openModal}
               aria-label={ariaLabel}
               marginBottom0={marginBottom0}
+              data-test-plugin-find-udp-button
             >
               {searchLabel || <Icon icon="search" color="#fff" />}
             </Button>
@@ -74,10 +74,10 @@ const UDPSearch = ({
 
 UDPSearch.propTypes = {
   buttonId: PropTypes.string,
-  marginBottom0: PropTypes.bool,
   renderTrigger: PropTypes.func,
-  searchButtonStyle: PropTypes.string,
   searchLabel: PropTypes.node,
+  searchButtonStyle: PropTypes.string,
+  marginBottom0: PropTypes.bool,
 };
 
 export default UDPSearch;

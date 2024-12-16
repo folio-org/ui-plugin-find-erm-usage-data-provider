@@ -1,4 +1,5 @@
 import { render } from '@folio/jest-config-stripes/testing-library/react';
+
 import { StripesConnectedSource } from '@folio/stripes/smart-components';
 
 import UDPSearchContainer from './UDPSearchContainer';

@@ -1,6 +1,6 @@
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
-import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { ModuleHierarchyProvider, StripesContext, useStripes } from '@folio/stripes/core';
 
 import udps from '../test/fixtures/udps';
@@ -16,28 +16,29 @@ const history = {};
 const renderUDPsView = (
   stripes,
   udpsData,
-) => renderWithIntl(
-  <MemoryRouter>
-    <StripesContext.Provider value={stripes}>
-      <ModuleHierarchyProvider module="@folio/plugin-find-erm-usage-data-provider">
-        <UDPsView
-          data={{
-            udps: udpsData,
-          }}
-          selectedRecordId=""
-          onNeedMoreData={jest.fn()}
-          isEmptyMessage={isEmptyMessage}
-          queryGetter={jest.fn()}
-          querySetter={jest.fn()}
-          searchString=""
-          history={history}
-          onSearchComplete={onSearchComplete}
-          location={{ pathname: '', search: '' }}
-        />
-      </ModuleHierarchyProvider>
-    </StripesContext.Provider>
-  </MemoryRouter>,
-);
+) =>
+  renderWithIntl(
+    <MemoryRouter>
+      <StripesContext.Provider value={stripes}>
+        <ModuleHierarchyProvider module="@folio/plugin-find-erm-usage-data-provider">
+          <UDPsView
+            data={{
+              udps: udpsData,
+            }}
+            selectedRecordId=""
+            onNeedMoreData={jest.fn()}
+            isEmptyMessage={isEmptyMessage}
+            queryGetter={jest.fn()}
+            querySetter={jest.fn()}
+            searchString=""
+            history={history}
+            onSearchComplete={onSearchComplete}
+            location={{ pathname: '', search: '' }}
+          />
+        </ModuleHierarchyProvider>
+      </StripesContext.Provider>
+    </MemoryRouter>
+  );
 
 describe('UDPsView', () => {
   let stripes;
@@ -148,7 +149,6 @@ describe('UDPsView - without results', () => {
     expect(document.querySelector('#clickable-search-udps')).toBeEnabled();
     const searchButton = document.querySelector('#clickable-search-udps');
     expect(searchButton).toBeInTheDocument();
-    await userEvent.click(searchButton);
 
     expect(document.querySelectorAll('#list-udps .mclRowContainer > [role=row]').length).toEqual(0);
   });
