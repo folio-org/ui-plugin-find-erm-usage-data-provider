@@ -9,8 +9,6 @@ import UDPsView from './UDPsView';
 
 jest.mock('react-virtualized-auto-sizer', () => ({ children }) => children({ width: 1920, height: 1080 }));
 
-const onSearchComplete = jest.fn();
-const isEmptyMessage = jest.fn();
 const history = {};
 
 const renderUDPsView = (
@@ -27,12 +25,10 @@ const renderUDPsView = (
             }}
             selectedRecordId=""
             onNeedMoreData={jest.fn()}
-            isEmptyMessage={isEmptyMessage}
             queryGetter={jest.fn()}
             querySetter={jest.fn()}
             searchString=""
             history={history}
-            onSearchComplete={onSearchComplete}
             location={{ pathname: '', search: '' }}
           />
         </ModuleHierarchyProvider>
@@ -99,8 +95,8 @@ describe('UDPsView', () => {
     });
   });
 
-  describe('click "active" filter and load new results', () => {
-    it('should show a certain amount of results and all columns', async () => {
+  describe('click "active" filter', () => {
+    it('should enable "reset all" button and show all columns of list of results', async () => {
       renderUDPsView(stripes, udps);
       expect(document.querySelector('#clickable-filter-harvestingStatus-active')).toBeInTheDocument();
 
@@ -116,19 +112,23 @@ describe('UDPsView', () => {
     });
   });
 
-  describe('enter search string and load new results', () => {
-    it('should enable search button and show a certain amount of results', async () => {
+  describe('enter search string', () => {
+    it('should enable "search" and "reset all" buttons', async () => {
       renderUDPsView(stripes, udps);
 
       expect(document.querySelector('#plugin-find-udp-filter-pane')).toBeInTheDocument();
 
       const searchFieldInput = document.querySelector('#input-udp-search');
       const searchButton = document.querySelector('#clickable-search-udps');
+      const resetAllButton = document.querySelector('#clickable-reset-all');
+      expect(searchButton).toBeInTheDocument();
+      expect(resetAllButton).toBeInTheDocument();
       expect(searchButton).toBeDisabled();
+      expect(resetAllButton).toBeDisabled();
       await userEvent.type(searchFieldInput, 'Test');
 
-      expect(searchButton).toBeInTheDocument();
       expect(searchButton).toBeEnabled();
+      expect(resetAllButton).toBeEnabled();
     });
   });
 });
