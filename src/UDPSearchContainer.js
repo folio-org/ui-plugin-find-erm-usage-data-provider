@@ -29,11 +29,6 @@ const UDPSearchContainer = ({
 
   const source = new StripesConnectedSource({ resources, mutator }, stripes.logger, 'usageDataProviders');
 
-  // check if this block is still necessary
-  if (source) {
-    source.update({ resources, mutator }, 'usageDataProviders');
-  }
-
   const handleNeedMoreData = () => {
     if (source) {
       source.fetchMore(RESULT_COUNT_INCREMENT);

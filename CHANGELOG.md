@@ -10,6 +10,7 @@
 * Add support for interface `aggregator-settings 2.0` ([UIPFUDP-42](https://folio-org.atlassian.net/browse/UIPFUDP-42))
 * Add support for interface `erm-usage-harvester 2.0`([UIPFUDP-43](https://folio-org.atlassian.net/browse/UIPFUDP-43))
 * Deleting search string via keyboard does not update search results ([UIPFUDP-36](https://folio-org.atlassian.net/browse/UIPFUDP-36))
+* Remove unused code ([UIPFUDP-39](https://folio-org.atlassian.net/browse/UIPFUDP-39))
 
 ## [6.1.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v6.1.0) (2024-03-20)
 * Translation updates
