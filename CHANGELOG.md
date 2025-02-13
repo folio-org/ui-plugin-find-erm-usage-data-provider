@@ -3,6 +3,7 @@
 ## 7.0.0 (IN PROGRESS)
 * Remove unused code ([UIPFUDP-39](https://folio-org.atlassian.net/browse/UIPFUDP-39))
 * Migrate react-intl to v7 ([UIPFUDP-46](https://folio-org.atlassian.net/browse/UIPFUDP-46))
+* Migrate stripes dependencies to their Sunflower versions ([UIPFUDP-45](https://folio-org.atlassian.net/browse/UIPFUDP-45))
 
 ## [6.2.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v6.2.0) (2024-10-29)
 * Change class to function components and refactor away from default props for functional components([UIPFUDP-35](https://folio-org.atlassian.net/browse/UIPFUDP-35))
