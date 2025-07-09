@@ -1,12 +1,12 @@
 {
     "meta.title": "Usage-data-provider-finder (плагін)",
-    "modal.label": "Select usage data provider",
-    "searchButton.title": "Find usage data provider",
+    "modal.label": "Виберіть постачальника даних про використання",
+    "searchButton.title": "Знайти постачальника даних про використання",
     "udp.searchInputLabel": "Пошук постачальників даних про використання",
-    "information.harvestingStatus": "Harvesting status",
-    "information.harvestVia": "Harvest via",
-    "information.aggregator": "Aggregator",
-    "information.aggregators": "Aggregators",
-    "information.providerName": "Provider name",
-    "information.latestStatistics": "Latest statistics"
+    "information.harvestingStatus": "Стан збору даних",
+    "information.harvestVia": "Збір даних через",
+    "information.aggregator": "Агрегатор",
+    "information.aggregators": "Агрегатори",
+    "information.providerName": "Назва постачальника",
+    "information.latestStatistics": "Остання статистика"
 }
