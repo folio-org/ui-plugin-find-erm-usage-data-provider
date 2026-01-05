@@ -1,12 +1,12 @@
 {
-    "meta.title": "Usage-data-provider-finder (plugin)",
-    "modal.label": "Select usage data provider",
-    "searchButton.title": "Find usage data provider",
-    "udp.searchInputLabel": "Search usage data providers",
-    "information.harvestingStatus": "Harvesting status",
-    "information.harvestVia": "Harvest via",
-    "information.aggregator": "Aggregator",
-    "information.aggregators": "Aggregators",
-    "information.providerName": "Provider name",
-    "information.latestStatistics": "Latest statistics"
+    "meta.title": "Kullanım verisi sağlayıcı bulucu (eklenti)",
+    "modal.label": "Kullanım verisi sağlayıcısını seçin",
+    "searchButton.title": "Kullanım verisi sağlayıcısını bulun",
+    "udp.searchInputLabel": "Ara kullanım verisi sağlayıcıları",
+    "information.harvestingStatus": "Veri toplama süreci durumu",
+    "information.harvestVia": "Veri toplama aracılığıyla",
+    "information.aggregator": "Toplayıcı",
+    "information.aggregators": "Toplayıcılar",
+    "information.providerName": "Sağlayıcı adı",
+    "information.latestStatistics": "Son istatistikler"
 }
