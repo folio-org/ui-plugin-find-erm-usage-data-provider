@@ -8,7 +8,7 @@ jest.mock('./UDPSearchContainer', () => {
   // eslint-disable-next-line react/prop-types
   return ({ onSelectRow }) => (
     <>
-      <button type="button" onClick={() => onSelectRow({}, {})}>
+      <button onClick={() => onSelectRow({}, {})} type="button">
         SelectUDP
       </button>
     </>
@@ -23,16 +23,15 @@ const onCloseModal = jest.fn();
 const onSelectUDP = jest.fn();
 const onUDPSelected = jest.fn();
 
-const renderUDPSearchModal = (open = true, onClose = onCloseModal, selectUDP = onSelectUDP) =>
-  renderWithIntl(
-    <UDPSearchModal
-      selectUDP={selectUDP}
-      onClose={onClose}
-      open={open}
-      onUDPSelected={onUDPSelected}
-      stripes={stripes}
-    />
-  );
+const renderUDPSearchModal = (open = true, onClose = onCloseModal, selectUDP = onSelectUDP) => renderWithIntl(
+  <UDPSearchModal
+    onClose={onClose}
+    onUDPSelected={onUDPSelected}
+    open={open}
+    selectUDP={selectUDP}
+    stripes={stripes}
+  />
+);
 
 describe('UDPSearchModal component', () => {
   it('should display UDP search modal', () => {

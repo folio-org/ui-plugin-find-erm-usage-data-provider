@@ -1,8 +1,15 @@
-import { useState, useRef } from 'react';
-import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
-import { Button, Icon } from '@folio/stripes/components';
 import contains from 'dom-helpers/query/contains';
+import PropTypes from 'prop-types';
+import {
+  useRef,
+  useState,
+} from 'react';
+import { FormattedMessage } from 'react-intl';
+
+import {
+  Button,
+  Icon,
+} from '@folio/stripes/components';
 
 import UDPSearchModal from './UDPSearchModal';
 
@@ -48,24 +55,24 @@ const UDPSearch = ({
         <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.searchButton.title">
           {(ariaLabel) => (
             <Button
-              id={buttonId}
               key="searchButton"
-              buttonStyle={searchButtonStyle}
-              buttonRef={modalTrigger}
-              onClick={openModal}
               aria-label={ariaLabel}
-              marginBottom0={marginBottom0}
+              buttonRef={modalTrigger}
+              buttonStyle={searchButtonStyle}
               data-test-plugin-find-udp-button
+              id={buttonId}
+              marginBottom0={marginBottom0}
+              onClick={openModal}
             >
-              {searchLabel || <Icon icon="search" color="#fff" />}
+              {searchLabel || <Icon color="#fff" icon="search" />}
             </Button>
           )}
         </FormattedMessage>
       )}
       <UDPSearchModal
         modalRef={modalRef}
-        open={isOpenModal}
         onClose={closeModal}
+        open={isOpenModal}
         {...props}
       />
     </>
@@ -74,10 +81,10 @@ const UDPSearch = ({
 
 UDPSearch.propTypes = {
   buttonId: PropTypes.string,
-  renderTrigger: PropTypes.func,
-  searchLabel: PropTypes.node,
-  searchButtonStyle: PropTypes.string,
   marginBottom0: PropTypes.bool,
+  renderTrigger: PropTypes.func,
+  searchButtonStyle: PropTypes.string,
+  searchLabel: PropTypes.node,
 };
 
 export default UDPSearch;

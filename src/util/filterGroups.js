@@ -5,8 +5,8 @@ const filterGroups = [
     cql: 'harvestingConfig.harvestingStatus',
     values: [
       { name: 'Active', cql: 'active' },
-      { name: 'Inactive', cql: 'inactive' }
-    ]
+      { name: 'Inactive', cql: 'inactive' },
+    ],
   },
   {
     label: 'Harvest via',
@@ -14,16 +14,16 @@ const filterGroups = [
     cql: 'harvestingConfig.harvestVia',
     values: [
       { name: 'Sushi', cql: 'sushi' },
-      { name: 'Aggregator', cql: 'aggregator' }
-    ]
+      { name: 'Aggregator', cql: 'aggregator' },
+    ],
   },
   {
     label: 'Aggregators',
     name: 'aggregators',
     cql: 'harvestingConfig.aggregator.name',
     values: [],
-    restrictWhenAllSelected: true
-  }
+    restrictWhenAllSelected: true,
+  },
 ];
 
 export default filterGroups;

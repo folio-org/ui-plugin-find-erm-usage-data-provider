@@ -1,5 +1,4 @@
 import { render } from '@folio/jest-config-stripes/testing-library/react';
-
 import { StripesConnectedSource } from '@folio/stripes/smart-components';
 
 import UDPSearchContainer from './UDPSearchContainer';
@@ -9,29 +8,29 @@ jest.mock('./UDPsView', () => jest.fn(() => null));
 
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
-  StripesConnectedSource: jest.fn()
+  StripesConnectedSource: jest.fn(),
 }));
 
 const mutator = {
   query: {
     update: jest.fn(),
-  }
+  },
 };
 
 const resources = {
   usageDataProviders: {
-    records: []
+    records: [],
   },
   aggregatorSettings: {
-    records: []
+    records: [],
   },
-  query: {}
+  query: {},
 };
 
 const stripes = {
   logger: {
-    log: jest.fn()
-  }
+    log: jest.fn(),
+  },
 };
 
 const renderUDPSearchContainer = (props = {}) => render(
@@ -52,7 +51,7 @@ describe('UDPSearchContainer', () => {
 
     mockSource = {
       update: jest.fn(),
-      fetchMore: jest.fn()
+      fetchMore: jest.fn(),
     };
 
     StripesConnectedSource.mockImplementation(() => mockSource);
@@ -81,7 +80,7 @@ describe('UDPSearchContainer', () => {
   it('should return the query from resources when queryGetter is called', () => {
     const customResources = {
       ...resources,
-      query: { query: 'test' }
+      query: { query: 'test' },
     };
 
     renderUDPSearchContainer({ resources: customResources });
@@ -96,7 +95,7 @@ describe('UDPSearchContainer', () => {
     const customResources = {
       ...resources,
       usageDataProviders: { records: [{ id: '1' }] },
-      aggregatorSettings: { records: [{ id: '2' }] }
+      aggregatorSettings: { records: [{ id: '2' }] },
     };
 
     renderUDPSearchContainer({ resources: customResources });
@@ -105,7 +104,7 @@ describe('UDPSearchContainer', () => {
 
     expect(udpViewProps.data).toEqual({
       udps: [{ id: '1' }],
-      aggregators: [{ id: '2' }]
+      aggregators: [{ id: '2' }],
     });
   });
 });

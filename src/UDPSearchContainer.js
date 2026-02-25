@@ -1,10 +1,14 @@
-import { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { get } from 'lodash';
+import PropTypes from 'prop-types';
+import {
+  useEffect,
+  useRef,
+} from 'react';
+
 import { stripesConnect } from '@folio/stripes/core';
 import {
   makeQueryFunction,
-  StripesConnectedSource
+  StripesConnectedSource,
 } from '@folio/stripes/smart-components';
 
 import UDPsView from './UDPsView';
@@ -49,7 +53,7 @@ const UDPSearchContainer = ({
     <UDPsView
       data={{
         udps,
-        aggregators: get(resources, 'aggregatorSettings.records', [])
+        aggregators: get(resources, 'aggregatorSettings.records', []),
       }}
       onNeedMoreData={handleNeedMoreData}
       onSelectRow={onSelectRow}
@@ -72,38 +76,39 @@ UDPSearchContainer.manifest = Object.freeze({
       params: {
         query: makeQueryFunction(
           'cql.allRecords=1',
-          '(label="%{query.query}*" or vendor="%{query.query}*" or platform="%{query.query}*" or harvestingConfig.aggregator.name="%{query.query}*")',
+          '(label="%{query.query}*" or vendor="%{query.query}*" or ' +
+            'platform="%{query.query}*" or harvestingConfig.aggregator.name="%{query.query}*")',
           {
             label: 'label',
             harvestingStatus: 'harvestingConfig.harvestingStatus',
             latestStats: 'latestReport',
-            aggregator: 'harvestingConfig.aggregator.name'
+            aggregator: 'harvestingConfig.aggregator.name',
           },
           filterGroups,
           2
-        )
+        ),
       },
-      staticFallback: { params: {} }
-    }
+      staticFallback: { params: {} },
+    },
   },
   aggregatorSettings: {
     type: 'okapi',
     path: 'aggregator-settings',
     records: 'aggregatorSettings',
-    shouldRefresh: () => false
+    shouldRefresh: () => false,
   },
   harvesterImpls: {
     type: 'okapi',
     path: 'erm-usage-harvester/impl?aggregator=false',
     throwErrors: false,
-    shouldRefresh: () => false
+    shouldRefresh: () => false,
   },
   query: {
     initialValue: {
-      sort: 'label'
-    }
+      sort: 'label',
+    },
   },
-  resultCount: { initialValue: INITIAL_RESULT_COUNT }
+  resultCount: { initialValue: INITIAL_RESULT_COUNT },
 });
 
 UDPSearchContainer.propTypes = {
@@ -111,8 +116,8 @@ UDPSearchContainer.propTypes = {
   onSelectRow: PropTypes.func.isRequired,
   resources: PropTypes.object,
   stripes: PropTypes.shape({
-    logger: PropTypes.object
-  })
+    logger: PropTypes.object,
+  }),
 };
 
 export default stripesConnect(UDPSearchContainer, { dataKey: 'find_udp' });

@@ -1,12 +1,18 @@
-import { useState, useEffect } from 'react';
+import {
+  find,
+  isEmpty,
+} from 'lodash';
 import PropTypes from 'prop-types';
+import {
+  useEffect,
+  useState,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
-import { find, isEmpty } from 'lodash';
 
 import {
   Accordion,
   AccordionSet,
-  FilterAccordionHeader
+  FilterAccordionHeader,
 } from '@folio/stripes/components';
 import { CheckboxFilter } from '@folio/stripes/smart-components';
 
@@ -22,7 +28,7 @@ const UDPFilters = ({
   const [filtersState, setFiltersState] = useState({
     harvestingStatus: [],
     harvestVia: [],
-    aggregators: []
+    aggregators: [],
   });
 
   useEffect(() => {
@@ -32,18 +38,19 @@ const UDPFilters = ({
     FILTERS.forEach(filterName => {
       const current = find(filterGroups, { name: filterName });
       let newValues = {};
+
       if (!isEmpty(current.values)) {
         newValues = current.values.map(key => {
           return {
             value: key.cql,
-            label: key.name
+            label: key.name,
           };
         });
       } else {
         const inputVals = data[`${filterName}`] || [];
         newValues = inputVals.map(entry => ({
           label: entry.label,
-          value: entry.label
+          value: entry.label,
         }));
       }
 
@@ -60,7 +67,7 @@ const UDPFilters = ({
     if (Object.keys(newState).length) {
       setFiltersState(prevState => ({
         ...prevState,
-        ...newState
+        ...newState,
       }));
     }
   }, [data, filtersState]);
@@ -86,7 +93,7 @@ const UDPFilters = ({
           onChange={group => {
             filterHandlers.state({
               ...activeFilters,
-              [group.name]: group.values
+              [group.name]: group.values,
             });
           }}
           selectedValues={groupFilters}
@@ -107,7 +114,7 @@ const UDPFilters = ({
 UDPFilters.propTypes = {
   activeFilters: PropTypes.object,
   data: PropTypes.object.isRequired,
-  filterHandlers: PropTypes.object
+  filterHandlers: PropTypes.object,
 };
 
 export default UDPFilters;

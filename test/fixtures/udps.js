@@ -37,7 +37,7 @@ const udps = [
     harvestingConfig: {
       harvestingStatus: 'active',
     },
-  }
+  },
 ];
 
 export default udps;
