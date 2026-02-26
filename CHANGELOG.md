@@ -1,6 +1,7 @@
 # Change history for ui-plugin-find-erm-usage-data-provider
 
 ## 7.1.0 (IN PROGRESS)
+* add CODEOWNERS
 * Add eslint rules ([UIPFUDP-48](https://folio-org.atlassian.net/browse/UIPFUDP-48))
 
 ## [7.0.0](https://github.com/folio-org/ui-plugin-find-erm-usage-data-provider/tree/v7.0.0) (2025-03-12)
