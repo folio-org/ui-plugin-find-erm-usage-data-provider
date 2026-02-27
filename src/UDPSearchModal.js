@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
+
 import { Modal } from '@folio/stripes/components';
 
-import UDPSearchContainer from './UDPSearchContainer';
 import css from './UDPSearch.css';
+import UDPSearchContainer from './UDPSearchContainer';
 
 const UDPSearchModal = ({
   modalRef,
@@ -23,16 +24,16 @@ const UDPSearchModal = ({
 
   return (
     <Modal
-      contentClass={css.modalContent}
-      enforceFocus={false}
-      onClose={onClose}
-      size="large"
-      open={open}
       ref={internalModalRef}
+      contentClass={css.modalContent}
+      dismissible
+      enforceFocus={false}
       label={
         <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.modal.label" />
       }
-      dismissible
+      onClose={onClose}
+      open={open}
+      size="large"
     >
       <UDPSearchContainer
         {...props}
@@ -43,14 +44,14 @@ const UDPSearchModal = ({
 };
 
 UDPSearchModal.propTypes = {
-  stripes: PropTypes.shape({
-    connect: PropTypes.func.isRequired
-  }).isRequired,
+  dataKey: PropTypes.string,
   modalRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  onUDPSelected: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  onUDPSelected: PropTypes.func.isRequired,
   open: PropTypes.bool,
-  dataKey: PropTypes.string
+  stripes: PropTypes.shape({
+    connect: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default UDPSearchModal;

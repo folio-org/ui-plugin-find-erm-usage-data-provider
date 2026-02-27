@@ -1,7 +1,11 @@
-import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
-import { ModuleHierarchyProvider, StripesContext, useStripes } from '@folio/stripes/core';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
+import {
+  ModuleHierarchyProvider,
+  StripesContext,
+  useStripes,
+} from '@folio/stripes/core';
 
 import udps from '../test/fixtures/udps';
 import renderWithIntl from '../test/jest/helpers/renderWithIntl';
@@ -13,28 +17,27 @@ const history = {};
 
 const renderUDPsView = (
   stripes,
-  udpsData,
-) =>
-  renderWithIntl(
-    <MemoryRouter>
-      <StripesContext.Provider value={stripes}>
-        <ModuleHierarchyProvider module="@folio/plugin-find-erm-usage-data-provider">
-          <UDPsView
-            data={{
-              udps: udpsData,
-            }}
-            selectedRecordId=""
-            onNeedMoreData={jest.fn()}
-            queryGetter={jest.fn()}
-            querySetter={jest.fn()}
-            searchString=""
-            history={history}
-            location={{ pathname: '', search: '' }}
-          />
-        </ModuleHierarchyProvider>
-      </StripesContext.Provider>
-    </MemoryRouter>
-  );
+  udpsData
+) => renderWithIntl(
+  <MemoryRouter>
+    <StripesContext.Provider value={stripes}>
+      <ModuleHierarchyProvider module="@folio/plugin-find-erm-usage-data-provider">
+        <UDPsView
+          data={{
+            udps: udpsData,
+          }}
+          history={history}
+          location={{ pathname: '', search: '' }}
+          onNeedMoreData={jest.fn()}
+          queryGetter={jest.fn()}
+          querySetter={jest.fn()}
+          searchString=""
+          selectedRecordId=""
+        />
+      </ModuleHierarchyProvider>
+    </StripesContext.Provider>
+  </MemoryRouter>
+);
 
 describe('UDPsView', () => {
   let stripes;

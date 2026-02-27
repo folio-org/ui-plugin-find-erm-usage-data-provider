@@ -9,7 +9,7 @@ jest.mock('./UDPSearchModal', () => jest.fn(({ open, onClose }) => (
     {open && (
       <div>
         <p>UDPSearchModal</p>
-        <button onClick={onClose} aria-label="Dismiss modal" type="button" />
+        <button aria-label="Dismiss modal" onClick={onClose} type="button" />
       </div>
     )}
   </div>
@@ -18,14 +18,13 @@ jest.mock('./UDPSearchModal', () => jest.fn(({ open, onClose }) => (
 const closeModal = jest.fn();
 const isOpen = true;
 
-const renderUDPSearch = (renderTrigger) =>
-  renderWithIntl(
-    <UDPSearch
-      renderTrigger={renderTrigger}
-      onClose={closeModal}
-      open={isOpen}
-    />
-  );
+const renderUDPSearch = (renderTrigger) => renderWithIntl(
+  <UDPSearch
+    onClose={closeModal}
+    open={isOpen}
+    renderTrigger={renderTrigger}
+  />
+);
 
 describe('UDPSearch component', () => {
   it('should display search UDP button', () => {

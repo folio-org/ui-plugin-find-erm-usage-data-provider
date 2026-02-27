@@ -1,22 +1,23 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
+
 import {
-  MultiColumnList,
-  SearchField,
-  Pane,
-  Icon,
   Button,
+  Icon,
+  MultiColumnList,
   NoValue,
+  Pane,
   PaneMenu,
   Paneset,
+  SearchField,
 } from '@folio/stripes/components';
 import { AppIcon } from '@folio/stripes/core';
 import {
   CollapseFilterPaneButton,
   ExpandFilterPaneButton,
-  SearchAndSortQuery,
   SearchAndSortNoResultsMessage as NoResultsMessage,
+  SearchAndSortQuery,
 } from '@folio/stripes/smart-components';
 
 import UDPFilters from './UDPFilters';
@@ -81,9 +82,9 @@ const UDPsView = ({
     return (
       <div id="udps-no-results-message">
         <NoResultsMessage
-          source={source}
-          searchTerm={query.query || ''}
           filterPaneIsVisible
+          searchTerm={query.query || ''}
+          source={source}
           toggleFilterPane={toggleFilterPane}
         />
       </div>
@@ -199,8 +200,8 @@ const UDPsView = ({
                     <div className={css.resetButtonWrap}>
                       <Button
                         buttonStyle="none"
-                        id="clickable-reset-all"
                         disabled={disableReset()}
+                        id="clickable-reset-all"
                         onClick={resetAll}
                       >
                         <Icon icon="times-circle-solid">
@@ -221,8 +222,8 @@ const UDPsView = ({
                 defaultWidth="fill"
                 firstMenu={renderResultsFirstMenu(activeFilters)}
                 padContent={false}
-                paneTitle="Usage Data Providers"
                 paneSub={renderResultsPaneSubtitle()}
+                paneTitle="Usage Data Providers"
               >
                 <MultiColumnList
                   autosize
