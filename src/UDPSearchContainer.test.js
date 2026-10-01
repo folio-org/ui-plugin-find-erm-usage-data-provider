@@ -21,9 +21,6 @@ const resources = {
   usageDataProviders: {
     records: [],
   },
-  aggregatorSettings: {
-    records: [],
-  },
   query: {},
 };
 
@@ -95,7 +92,6 @@ describe('UDPSearchContainer', () => {
     const customResources = {
       ...resources,
       usageDataProviders: { records: [{ id: '1' }] },
-      aggregatorSettings: { records: [{ id: '2' }] },
     };
 
     renderUDPSearchContainer({ resources: customResources });
@@ -104,7 +100,6 @@ describe('UDPSearchContainer', () => {
 
     expect(udpViewProps.data).toEqual({
       udps: [{ id: '1' }],
-      aggregators: [{ id: '2' }],
     });
   });
 });

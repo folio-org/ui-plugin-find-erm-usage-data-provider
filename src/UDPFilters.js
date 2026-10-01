@@ -18,7 +18,7 @@ import { CheckboxFilter } from '@folio/stripes/smart-components';
 
 import filterGroups from './util/filterGroups';
 
-const FILTERS = ['harvestingStatus', 'harvestVia', 'aggregators'];
+const FILTERS = ['harvestingStatus'];
 
 const UDPFilters = ({
   activeFilters = {},
@@ -27,8 +27,6 @@ const UDPFilters = ({
 }) => {
   const [filtersState, setFiltersState] = useState({
     harvestingStatus: [],
-    harvestVia: [],
-    aggregators: [],
   });
 
   useEffect(() => {
@@ -105,8 +103,6 @@ const UDPFilters = ({
   return (
     <AccordionSet>
       {renderCheckboxFilter('harvestingStatus', 'Harvesting status')}
-      {renderCheckboxFilter('harvestVia', 'Harvest via')}
-      {renderCheckboxFilter('aggregators', 'Aggregators')}
     </AccordionSet>
   );
 };

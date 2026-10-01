@@ -51,10 +51,7 @@ const UDPSearchContainer = ({
 
   return (
     <UDPsView
-      data={{
-        udps,
-        aggregators: get(resources, 'aggregatorSettings.records', []),
-      }}
+      data={{ udps }}
       onNeedMoreData={handleNeedMoreData}
       onSelectRow={onSelectRow}
       queryGetter={queryGetter}
@@ -77,12 +74,11 @@ UDPSearchContainer.manifest = Object.freeze({
         query: makeQueryFunction(
           'cql.allRecords=1',
           '(label="%{query.query}*" or vendor="%{query.query}*" or ' +
-            'platform="%{query.query}*" or harvestingConfig.aggregator.name="%{query.query}*")',
+            'platform="%{query.query}*")',
           {
             label: 'label',
             harvestingStatus: 'harvestingConfig.harvestingStatus',
             latestStats: 'latestReport',
-            aggregator: 'harvestingConfig.aggregator.name',
           },
           filterGroups,
           2
@@ -90,18 +86,6 @@ UDPSearchContainer.manifest = Object.freeze({
       },
       staticFallback: { params: {} },
     },
-  },
-  aggregatorSettings: {
-    type: 'okapi',
-    path: 'aggregator-settings',
-    records: 'aggregatorSettings',
-    shouldRefresh: () => false,
-  },
-  harvesterImpls: {
-    type: 'okapi',
-    path: 'erm-usage-harvester/impl?aggregator=false',
-    throwErrors: false,
-    shouldRefresh: () => false,
   },
   query: {
     initialValue: {
