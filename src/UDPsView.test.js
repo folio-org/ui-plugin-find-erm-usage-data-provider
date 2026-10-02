@@ -75,7 +75,6 @@ describe('UDPsView', () => {
       expect(document.querySelector('#paneHeaderplugin-find-udp-filter-pane-pane-title')).toBeInTheDocument();
       expect(document.querySelector('[data-test-collapse-filter-pane-button]')).toBeInTheDocument();
       await userEvent.click(document.querySelector('#clickable-filter-harvestingStatus-active'));
-      await userEvent.click(document.querySelector('#clickable-filter-harvestVia-sushi'));
 
       await userEvent.click(document.querySelector('[data-test-collapse-filter-pane-button]'));
 
@@ -90,7 +89,7 @@ describe('UDPsView', () => {
       const expandFilterButton = document.querySelector('[data-test-expand-filter-pane-button]');
 
       const badge = expandFilterButton.querySelector('.badge .label');
-      expect(badge).toHaveTextContent('2');
+      expect(badge).toHaveTextContent('1');
 
       await userEvent.click(expandFilterButton);
 
@@ -111,7 +110,6 @@ describe('UDPsView', () => {
       expect(document.querySelector('#list-column-label')).toBeInTheDocument();
       expect(document.querySelector('#list-column-harvestingstatus')).toBeInTheDocument();
       expect(document.querySelector('#list-column-lateststats')).toBeInTheDocument();
-      expect(document.querySelector('#list-column-aggregator')).toBeInTheDocument();
     });
   });
 

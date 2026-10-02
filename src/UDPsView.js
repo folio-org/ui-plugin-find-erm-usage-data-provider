@@ -6,7 +6,6 @@ import {
   Button,
   Icon,
   MultiColumnList,
-  NoValue,
   Pane,
   PaneMenu,
   Paneset,
@@ -32,7 +31,7 @@ const UDPsView = ({
   querySetter,
   searchField,
   source,
-  visibleColumns = ['label', 'harvestingStatus', 'latestStats', 'aggregator'],
+  visibleColumns = ['label', 'harvestingStatus', 'latestStats'],
 }) => {
   const [filterPaneIsVisible, setFilterPaneIsVisible] = useState(true);
   const query = queryGetter() || {};
@@ -41,33 +40,20 @@ const UDPsView = ({
 
   const columnMapping = {
     label: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.providerName" />,
-    harvestingStatus: (
-      <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.harvestingStatus" />
-    ),
-    latestStats: (
-      <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.latestStatistics" />
-    ),
-    aggregator: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.aggregator" />,
+    harvestingStatus: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.harvestingStatus" />,
+    latestStats: <FormattedMessage id="ui-plugin-find-erm-usage-data-provider.information.latestStatistics" />,
   };
 
   const columnWidths = {
     label: 300,
     harvestingStatus: 150,
     latestStats: 150,
-    aggregator: 200,
-  };
-
-  const getAggregatorName = (udp) => {
-    return udp.harvestingConfig.harvestVia === 'aggregator'
-      ? udp.harvestingConfig.aggregator.name
-      : <NoValue />;
   };
 
   const formatter = {
     label: (udp) => udp.label,
     harvestingStatus: (udp) => udp.harvestingConfig.harvestingStatus,
     latestStats: (udp) => udp.latestReport,
-    aggregator: (udp) => getAggregatorName(udp),
   };
 
   const toggleFilterPane = () => {

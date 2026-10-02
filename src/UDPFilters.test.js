@@ -5,10 +5,7 @@ import {
 
 import UDPFilters from './UDPFilters';
 
-const data = {
-  udps: [],
-  aggregators: [{ label: 'test', value: 'test' }],
-};
+const data = { udps: [] };
 
 const renderSourceFilter = () => render(<UDPFilters activeFilters={{}} data={data} filterHandlers={{}} />);
 
@@ -20,12 +17,6 @@ describe('UDPFilters component', () => {
   it('should display filters', () => {
     expect(
       screen.getByText('ui-plugin-find-erm-usage-data-provider.information.harvestingStatus')
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('ui-plugin-find-erm-usage-data-provider.information.harvestVia')
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('ui-plugin-find-erm-usage-data-provider.information.aggregators')
     ).toBeInTheDocument();
   });
 });
